@@ -77,13 +77,13 @@ function parseVariation(str) {
 }
 
 /**
- * Scrape Dollar from Notícias Agrícolas
- * https://www.noticiasagricolas.com.br/cotacao-do-dolar/
+ * Scrape Dollar from Notícias Agrícolas - Mercado Financeiro
+ * Uses the same structure as Leite scraper (table.cot-fisicas)
  */
 async function scrapeDolar(browser) {
-    console.log('  Scraping Dólar from Notícias Agrícolas...');
+    console.log('  Scraping Dólar from Notícias Agrícolas (Mercado Financeiro)...');
 
-    const DOLAR_URL = 'https://www.noticiasagricolas.com.br/cotacao-do-dolar/';
+    const DOLAR_URL = 'https://www.noticiasagricolas.com.br/cotacoes/mercado-financeiro';
     const MAX_RETRIES = 3;
     const TIMEOUTS = [45000, 60000, 90000];
 
@@ -112,22 +112,27 @@ async function scrapeDolar(browser) {
 
             await randomDelay(500, 1500);
 
-            // Extract data from the first row
+            // Extract data - find the row with "Dólar"
             const data = await page.evaluate(() => {
-                const table = document.querySelector('table.cot-fisicas');
-                if (!table) return null;
+                const tables = document.querySelectorAll('table.cot-fisicas');
 
-                const firstRow = table.querySelector('tbody tr:first-child');
-                if (!firstRow) return null;
+                for (const table of tables) {
+                    const rows = table.querySelectorAll('tbody tr');
+                    for (const row of rows) {
+                        const cells = row.querySelectorAll('td');
+                        if (cells.length >= 3) {
+                            const currency = cells[0].innerText.trim();
+                            if (currency === 'Dólar' || currency.toLowerCase().includes('dólar')) {
+                                return {
+                                    price: cells[1].innerText.trim(), // Valor
+                                    variation: cells[2].innerText.trim() // Variação
+                                };
+                            }
+                        }
+                    }
+                }
 
-                const cells = firstRow.querySelectorAll('td');
-                if (cells.length < 3) return null;
-
-                // Columns: 0=Data, 1=Compra, 2=Venda, 3=Variação
-                return {
-                    price: cells[2].innerText.trim(), // Venda
-                    variation: cells[3]?.innerText.trim() || '0'
-                };
+                return null;
             });
 
             await page.close();
@@ -164,9 +169,9 @@ async function scrapeDolar(browser) {
 }
 
 /**
- * Scrape Café ICE NY from Notícias Agrícolas
- * Uses the converted R$/saca value for consistency
- */
+     * Scrape Café ICE NY from Notícias Agrícolas
+     * Uses the converted R$/saca value for consistency
+     */
 async function scrapeCafeICE(browser) {
     console.log('  Scraping Café ICE NY from Notícias Agrícolas...');
 
