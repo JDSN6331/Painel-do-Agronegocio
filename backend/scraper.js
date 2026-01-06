@@ -77,54 +77,85 @@ function parseVariation(str) {
 }
 
 /**
- * Fetch Dollar from AwesomeAPI (real-time updates)
- * https://docs.awesomeapi.com.br/api-de-moedas
+ * Scrape Dollar from Notícias Agrícolas
+ * https://www.noticiasagricolas.com.br/cotacao-do-dolar/
  */
-async function fetchDolarAwesome() {
-    console.log('  Fetching Dólar from AwesomeAPI...');
+async function scrapeDolar(browser) {
+    console.log('  Scraping Dólar from Notícias Agrícolas...');
 
+    const DOLAR_URL = 'https://www.noticiasagricolas.com.br/cotacao-do-dolar/';
     const MAX_RETRIES = 3;
+    const TIMEOUTS = [45000, 60000, 90000];
 
     for (let attempt = 1; attempt <= MAX_RETRIES; attempt++) {
+        const timeout = TIMEOUTS[attempt - 1] || TIMEOUTS[TIMEOUTS.length - 1];
+        let page = null;
+
         try {
             if (attempt > 1) {
                 console.log(`    🔄 Retry attempt ${attempt}/${MAX_RETRIES}...`);
-                await delay(2000 * attempt);
+                await delay(5000 * attempt);
             }
 
-            const url = 'https://economia.awesomeapi.com.br/json/last/USD-BRL';
+            page = await browser.newPage();
+            await page.setUserAgent(getRandomUserAgent());
+            await page.setExtraHTTPHeaders({
+                'Accept-Language': 'pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7',
+                'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+            });
+            await page.setViewport({ width: 1920, height: 1080 });
 
-            const response = await axios.get(url, {
-                timeout: 15000,
-                headers: {
-                    'Accept': 'application/json',
-                    'User-Agent': getRandomUserAgent()
-                }
+            await page.goto(DOLAR_URL, { waitUntil: 'networkidle2', timeout });
+
+            // Wait for the table to load
+            await page.waitForSelector('table.cot-fisicas', { timeout: 15000 });
+
+            await randomDelay(500, 1500);
+
+            // Extract data from the first row
+            const data = await page.evaluate(() => {
+                const table = document.querySelector('table.cot-fisicas');
+                if (!table) return null;
+
+                const firstRow = table.querySelector('tbody tr:first-child');
+                if (!firstRow) return null;
+
+                const cells = firstRow.querySelectorAll('td');
+                if (cells.length < 3) return null;
+
+                // Columns: 0=Data, 1=Compra, 2=Venda, 3=Variação
+                return {
+                    price: cells[2].innerText.trim(), // Venda
+                    variation: cells[3]?.innerText.trim() || '0'
+                };
             });
 
-            const data = response.data;
+            await page.close();
 
-            if (data && data.USDBRL) {
-                const quote = data.USDBRL;
-                const sellRate = parseFloat(quote.ask);
-                const variation = parseFloat(quote.pctChange);
-
-                console.log(`    ✅ Dólar: R$ ${formatCurrency(sellRate)} (${variation >= 0 ? '+' : ''}${variation.toFixed(2)}%)`);
-
-                return {
-                    name: 'Dólar',
-                    value: `R$ ${formatCurrency(sellRate)}`,
-                    change: parseFloat(variation.toFixed(2))
-                };
+            if (!data) {
+                console.log('    ⚠️ No Dólar data found');
+                return null;
             }
 
-            console.log('    ⚠️ No data in AwesomeAPI response');
+            const priceValue = parseNumber(data.price);
+            const variationValue = parseVariation(data.variation);
+
+            console.log(`    ✅ Dólar: R$ ${formatCurrency(priceValue)} (${variationValue >= 0 ? '+' : ''}${variationValue.toFixed(2)}%)`);
+
+            return {
+                name: 'Dólar',
+                value: `R$ ${formatCurrency(priceValue)}`,
+                change: parseFloat(variationValue.toFixed(2))
+            };
 
         } catch (error) {
+            if (page) await page.close().catch(() => { });
+
             if (attempt < MAX_RETRIES) {
-                console.log(`    ⚠️ AwesomeAPI error: ${error.message}`);
+                console.log(`    ⚠️ Attempt ${attempt} failed: ${error.message}`);
             } else {
-                console.error(`    ❌ Error fetching Dólar from AwesomeAPI:`, error.message);
+                console.error(`    ❌ Error scraping Dólar after ${MAX_RETRIES} attempts:`, error.message);
+                return null;
             }
         }
     }
@@ -418,14 +449,7 @@ export async function collectQuotes() {
 
     const quotes = [];
 
-    // First: Fetch Dollar via AwesomeAPI (real-time updates)
-    const dolar = await fetchDolarAwesome();
-    if (dolar) quotes.push(dolar);
-
-    // Wait before launching browser for other quotes
-    await randomDelay(2000, 4000);
-
-    // Launch browser for scraping other quotes
+    // Launch browser for scraping all quotes
     console.log('\n🌐 Launching browser...');
     let browser;
     try {
@@ -453,6 +477,13 @@ export async function collectQuotes() {
     }
 
     try {
+        // Scrape Dólar first
+        const dolar = await scrapeDolar(browser);
+        if (dolar) quotes.push(dolar);
+
+        console.log('    ⏳ Waiting before next commodity...');
+        await randomDelay(8000, 12000);
+
         // Scrape Café - both ICE NY (international) and CEPEA (domestic)
         const cafeICE = await scrapeCafeICE(browser);
 

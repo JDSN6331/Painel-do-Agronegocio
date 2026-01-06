@@ -58,7 +58,7 @@ const QuotesPanel = () => {
           Cotações
         </h2>
         <span className="text-xs text-muted-foreground">
-          <span className="font-semibold">Fonte:</span> AwesomeAPI, CEPEA/ESALQ, ICE NY e Notícias Agrícolas
+          <span className="font-semibold">Fonte:</span> CEPEA/ESALQ, ICE NY e Notícias Agrícolas
         </span>
       </div>
       <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-3">

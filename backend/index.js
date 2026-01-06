@@ -83,7 +83,7 @@ function saveNewsIfValid(filename, newData) {
     ensureOutputDir();
 
     const newCount = countNewsItems(newData);
-    const MIN_NEWS_REQUIRED = 18;
+    const MIN_NEWS_REQUIRED = 22;
 
     if (newCount < MIN_NEWS_REQUIRED) {
         console.log(`⚠️ Coleta retornou apenas ${newCount} notícias (mínimo: ${MIN_NEWS_REQUIRED})`);
@@ -115,6 +115,7 @@ function saveQuotesIfValid(filename, newData) {
     ensureOutputDir();
 
     const newCount = newData?.quotes?.length || 0;
+    const MIN_QUOTES_REQUIRED = 7;
     let previousCount = 0;
 
     if (fs.existsSync(filename)) {
@@ -126,6 +127,16 @@ function saveQuotesIfValid(filename, newData) {
         }
     }
 
+    // Check if we have minimum required quotes
+    if (newCount < MIN_QUOTES_REQUIRED) {
+        console.log(`⚠️ Coleta retornou apenas ${newCount} cotações (mínimo: ${MIN_QUOTES_REQUIRED})`);
+        if (previousCount >= MIN_QUOTES_REQUIRED) {
+            console.log(`🛡️ Mantendo arquivo anterior com ${previousCount} cotações`);
+            return false;
+        }
+    }
+
+    // Also check if new count is less than previous
     if (newCount < previousCount) {
         console.log(`⚠️ Coleta retornou apenas ${newCount} cotações (anterior tinha ${previousCount})`);
         console.log(`🛡️ Mantendo arquivo anterior com ${previousCount} cotações`);
@@ -144,6 +155,7 @@ function saveWeatherIfValid(filename, newData) {
     ensureOutputDir();
 
     const newCount = newData?.weather?.length || 0;
+    const MIN_WEATHER_REQUIRED = 4;
     let previousCount = 0;
 
     if (fs.existsSync(filename)) {
@@ -155,6 +167,16 @@ function saveWeatherIfValid(filename, newData) {
         }
     }
 
+    // Check if we have minimum required weather items
+    if (newCount < MIN_WEATHER_REQUIRED) {
+        console.log(`⚠️ Coleta retornou apenas ${newCount} cidades (mínimo: ${MIN_WEATHER_REQUIRED})`);
+        if (previousCount >= MIN_WEATHER_REQUIRED) {
+            console.log(`🛡️ Mantendo arquivo anterior com ${previousCount} cidades`);
+            return false;
+        }
+    }
+
+    // Also check if new count is less than previous
     if (newCount < previousCount) {
         console.log(`⚠️ Coleta retornou apenas ${newCount} cidades (anterior tinha ${previousCount})`);
         console.log(`🛡️ Mantendo arquivo anterior com ${previousCount} cidades`);
