@@ -1129,9 +1129,12 @@ async function fetchNewsForQuery(browser, searchQuery, subId, categoryId, quota,
 
                 existingTitles.push(cleanTitle);
 
-                const rawDate = articlePubDate || item.pubDate;
+                // PRIORIDADE: RSS feed date (Google News) > HTML extracted date > Today
+                // O Google News já extrai e normaliza a data de publicação, então é mais confiável
+                const rssFeedDate = item.pubDate || item.isoDate;
+                const rawDate = rssFeedDate || articlePubDate;
                 const finalPubDate = parseDate(rawDate);
-                console.log(`        ↳ Date: raw="${rawDate}" → parsed="${finalPubDate}"`);
+                console.log(`        ↳ Date: RSS="${rssFeedDate || 'N/A'}" HTML="${articlePubDate || 'N/A'}" → parsed="${finalPubDate}"`);
 
                 let finalSummary = articleSummary;
                 // Ensure finalSummary is a string before processing
