@@ -51,9 +51,9 @@ const WeatherPanel = () => {
 
   return (
     <div className="glass-panel p-3 sm:p-4">
-      <div className="flex flex-wrap items-center justify-between gap-2 mb-3 sm:mb-4">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-2 mb-3 sm:mb-4">
         <h2 className="text-base sm:text-lg font-semibold font-heading text-agro-gold flex items-center gap-2">
-          <Cloud className="w-4 h-4 sm:w-5 sm:h-5" />
+          <Cloud className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
           Clima
         </h2>
         <span className="text-[10px] sm:text-xs text-muted-foreground">
