@@ -51,42 +51,42 @@ const QuotesPanel = () => {
   }
 
   return (
-    <div className="glass-panel p-4">
-      <div className="flex items-center justify-between mb-4">
-        <h2 className="text-lg font-semibold font-heading text-agro-gold flex items-center gap-2">
-          <DollarSign className="w-5 h-5" />
+    <div className="glass-panel p-3 sm:p-4">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-2 mb-3 sm:mb-4">
+        <h2 className="text-base sm:text-lg font-semibold font-heading text-agro-gold flex items-center gap-2">
+          <DollarSign className="w-5 h-5 flex-shrink-0" />
           Cotações
         </h2>
-        <span className="text-xs text-muted-foreground">
-          <span className="font-semibold">Fonte:</span> CEPEA/ESALQ, ICE NY e Notícias Agrícolas
+        <span className="text-[10px] sm:text-xs text-muted-foreground">
+          <span className="font-semibold">Fonte:</span> CEPEA/ESALQ (Notícias Agrícolas) e ICE NY
         </span>
       </div>
-      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-3">
+      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-2 sm:gap-3">
         {(quotes as Quote[]).map((quote) => (
           <div
             key={quote.name}
-            className="quote-card flex flex-col items-center justify-center text-center p-3 rounded-lg bg-secondary/50 border border-border/50 transition-all duration-300 cursor-pointer"
+            className="glass-card quote-card flex flex-col items-center justify-center text-center p-2 sm:p-3 rounded-lg transition-all duration-300 cursor-pointer"
           >
-            <div className="flex items-center justify-center gap-2 mb-1">
-              <span className="text-agro-gold-light">{iconMap[quote.name] || <DollarSign className="w-5 h-5" />}</span>
-              <span className={`font-medium text-muted-foreground ${quote.name.includes('Café') ? 'text-xs' : 'text-sm'}`}>{quote.name}</span>
+            <div className="flex items-center justify-center gap-1 sm:gap-2 mb-1">
+              <span className="text-agro-gold-light">{iconMap[quote.name] || <DollarSign className="w-4 h-4 sm:w-5 sm:h-5" />}</span>
+              <span className={`font-medium text-muted-foreground ${quote.name.includes('Café') ? 'text-[10px] sm:text-xs' : 'text-xs sm:text-sm'}`}>{quote.name}</span>
             </div>
             {quote.name === 'Café ICE NY' && (
-              <span className="text-[10px] text-muted-foreground/70 mb-2">Ref. Internacional</span>
+              <span className="text-[9px] sm:text-[10px] text-muted-foreground/70 mb-1 sm:mb-2">Ref. Internacional</span>
             )}
             {quote.name === 'Café CEPEA/ESALQ' && (
-              <span className="text-[10px] text-muted-foreground/70 mb-2">Mercado Físico BR</span>
+              <span className="text-[9px] sm:text-[10px] text-muted-foreground/70 mb-1 sm:mb-2">Mercado Físico BR</span>
             )}
             {quote.name !== 'Café ICE NY' && quote.name !== 'Café CEPEA/ESALQ' && (
-              <div className="mb-2" />
+              <div className="mb-1 sm:mb-2" />
             )}
-            <div className="flex items-center justify-center gap-2">
-              <span className="text-sm font-bold text-foreground">{quote.value}</span>
-              <div className={`flex items-center gap-1 text-xs ${quote.change >= 0 ? 'quote-positive' : 'quote-negative'}`}>
+            <div className="flex items-center justify-center gap-1 sm:gap-2">
+              <span className="text-xs sm:text-sm font-bold text-foreground">{quote.value}</span>
+              <div className={`flex items-center gap-0.5 sm:gap-1 text-[10px] sm:text-xs ${quote.change >= 0 ? 'quote-positive' : 'quote-negative'}`}>
                 {quote.change >= 0 ? (
-                  <TrendingUp className="w-3 h-3" />
+                  <TrendingUp className="w-2.5 h-2.5 sm:w-3 sm:h-3" />
                 ) : (
-                  <TrendingDown className="w-3 h-3" />
+                  <TrendingDown className="w-2.5 h-2.5 sm:w-3 sm:h-3" />
                 )}
                 <span>{quote.change >= 0 ? '+' : ''}{quote.change.toFixed(2)}%</span>
               </div>

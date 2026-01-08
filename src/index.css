@@ -112,6 +112,26 @@
     border-color: hsl(var(--agro-gold) / 0.4);
   }
 
+  /* Carousel thumbnails - no hover effects, no glow */
+  .carousel-thumbnail {
+    @apply backdrop-blur-sm rounded-lg overflow-hidden;
+    box-shadow: none !important;
+  }
+
+  .carousel-thumbnail:hover {
+    transform: none !important;
+    box-shadow: none !important;
+    border-color: inherit !important;
+  }
+
+  .carousel-thumbnail::before {
+    display: none !important;
+  }
+
+  .carousel-thumbnail::after {
+    display: none !important;
+  }
+
   /* Quote, Weather and News Card Hover Effects */
   .quote-card,
   .weather-card,

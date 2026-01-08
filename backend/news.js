@@ -54,8 +54,11 @@ const GLOBAL_EXCLUSIONS = [
     'novela', 'atriz', 'cantor', 'cantora', 'artista',
     // Esportes (exceto contexto agrícola)
     'futebol', 'copa do mundo', 'olimpíadas',
-    // Política partidária
-    'eleição', 'eleições', 'candidato', 'deputado', 'senador', 'vereador'
+    // Política partidária e governo (Eduardo Leite = governador RS, não produto leite)
+    'eleição', 'eleições', 'candidato', 'deputado', 'senador', 'vereador',
+    'eduardo leite', 'governador leite', 'leite autoriza', 'polícia penal',
+    // Artigos exclusivamente sobre cotações/preços (não queremos em categorias de notícias)
+    'cotações e informações', 'café em foco', 'fechamento do mercado'
 ];
 
 // GEOGRAPHIC FILTER - Exclude news from other countries (not relevant for Brazilian agribusiness)
@@ -451,6 +454,19 @@ const CATEGORY_REQUIRED_KEYWORDS = {
     'cooxupe': [
         // Cooxupé - Cooperativa de café
         'cooxupé', 'cooxupe'
+    ],
+    'inovacao-agro': [
+        // Inovação e tecnologia no agronegócio - termos ESPECÍFICOS (sem genéricos)
+        'agtech', 'agritech', 'agricultura de precisão', 'agricultura digital', 'agricultura 4.0',
+        'drone', 'drones', 'vant', 'pulverização aérea', 'pulverização inteligente',
+        'inteligência artificial', 'machine learning', 'visão computacional', 'deep learning',
+        'iot', 'internet das coisas', 'sensor', 'sensores', 'telemetria', 'gps agrícola',
+        'startup agro', 'startups agro', 'inovação', 'tecnologia', 'digital',
+        'automação', 'robô', 'robôs', 'robótica', 'autônomo', 'autônoma', 'trator autônomo',
+        'colheitadeira inteligente', 'pulverizador autônomo', 'piloto automático',
+        'big data', 'analytics', 'plataforma digital', 'algoritmo',
+        'rastreabilidade', 'blockchain', 'conectividade rural',
+        'satélite', 'imagem de satélite', 'sensoriamento remoto', 'mapeamento aéreo'
     ]
 };
 
@@ -464,7 +480,15 @@ const CATEGORY_FEEDS = [
         skipValidations: true,
         // Verificar "Cooxupé" no título OU resumo
         checkKeywordInTitleOrSummary: true,
-        // Cota especial: 4 notícias (1 destaque + 3 secundárias)
+        // Cota especial: 4 notícias (layout carrossel)
+        newsQuota: 4
+    },
+    {
+        id: 'inovacao-agro',
+        title: 'Inovação no Agro',
+        // Query simplificada para resultados mais diversos e recentes
+        searchQuery: 'tecnologia+agronegócio+OR+inovação+agronegócio+OR+drone+agricultura+OR+automação+agrícola',
+        // Cota especial: 4 notícias (layout carrossel)
         newsQuota: 4
     },
     {
@@ -825,6 +849,49 @@ function isValidImageUrl(url) {
 }
 
 /**
+ * Verify if image URL is actually accessible (not blocked by hotlinking protection)
+ * Returns true if image is accessible, false otherwise
+ */
+async function verifyImageAccessible(imageUrl) {
+    if (!imageUrl) return false;
+
+    try {
+        const https = require('https');
+        const http = require('http');
+        const url = new URL(imageUrl);
+        const protocol = url.protocol === 'https:' ? https : http;
+
+        return new Promise((resolve) => {
+            const req = protocol.request(imageUrl, {
+                method: 'HEAD',
+                timeout: 5000,
+                headers: {
+                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+                    'Accept': 'image/webp,image/apng,image/*,*/*;q=0.8',
+                    'Referer': url.origin
+                }
+            }, (res) => {
+                // Check if response is OK and content-type is image
+                const contentType = res.headers['content-type'] || '';
+                const isImage = contentType.startsWith('image/');
+                const isAccessible = res.statusCode >= 200 && res.statusCode < 400;
+                resolve(isAccessible && isImage);
+            });
+
+            req.on('error', () => resolve(false));
+            req.on('timeout', () => {
+                req.destroy();
+                resolve(false);
+            });
+
+            req.end();
+        });
+    } catch {
+        return false;
+    }
+}
+
+/**
  * Navigate to Google News URL and follow redirect to get real article URL, image, and publication date
  * WITH rate limiting protection
  */
@@ -871,6 +938,32 @@ async function fetchArticleData(browser, googleNewsUrl, itemTitle) {
         // Get the final URL after redirect
         const finalUrl = page.url();
         console.log(`        ↳ Redirected to: ${finalUrl.substring(0, 60)}...`);
+
+        // Check if the page is a 404 error page
+        const is404Page = await page.evaluate(() => {
+            const pageTitle = document.title.toLowerCase();
+            const bodyText = document.body?.innerText?.toLowerCase() || '';
+
+            // Common 404 indicators in title
+            const titleIndicators = ['404', 'não encontrada', 'not found', 'página não existe', 'erro'];
+            const titleIs404 = titleIndicators.some(ind => pageTitle.includes(ind));
+
+            // Common 404 indicators in body (check first 2000 chars to catch messages further down)
+            const bodyStart = bodyText.substring(0, 2000);
+            const bodyIndicators = ['página não encontrada', 'page not found', 'conteúdo não existe',
+                'link acessado não existe', 'o conteúdo solicitado não foi encontrado',
+                'conteúdo solicitado não foi encontrado', 'esta página não existe',
+                'artigo não encontrado', 'notícia não encontrada', 'erro 404'];
+            const bodyIs404 = bodyIndicators.some(ind => bodyStart.includes(ind));
+
+            return titleIs404 || bodyIs404;
+        });
+
+        if (is404Page) {
+            console.log(`        ✗ 404 Page detected, skipping article`);
+            await page.close();
+            return { finalUrl: null, imageUrl: null, pubDate: null, summary: null, is404: true };
+        }
 
         // Extract og:image, publication date, and summary from the final page
         const { imageUrl, pubDate, summary } = await page.evaluate(() => {
@@ -1036,7 +1129,14 @@ async function fetchNewsForQuery(browser, searchQuery, subId, categoryId, quota,
                 // IMPORTANT: Add delay between each article fetch to avoid rate limiting
                 await randomDelay(5000, 8000);
 
-                const { finalUrl, imageUrl, pubDate: articlePubDate, summary: articleSummary } = await fetchArticleData(browser, item.link, item.title || 'Unknown');
+                const fetchResult = await fetchArticleData(browser, item.link, item.title || 'Unknown');
+                const { finalUrl, imageUrl, pubDate: articlePubDate, summary: articleSummary, is404 } = fetchResult;
+
+                // Skip 404 pages
+                if (is404) {
+                    console.log(`        ⏭️ Skipping 404 page: ${cleanTitle.substring(0, 50)}...`);
+                    continue;
+                }
 
                 let sourceName = 'Google News';
                 if (item.source) {
@@ -1135,6 +1235,17 @@ async function fetchNewsForQuery(browser, searchQuery, subId, categoryId, quota,
                 const rawDate = rssFeedDate || articlePubDate;
                 const finalPubDate = parseDate(rawDate);
                 console.log(`        ↳ Date: RSS="${rssFeedDate || 'N/A'}" HTML="${articlePubDate || 'N/A'}" → parsed="${finalPubDate}"`);
+
+                // Validar idade da notícia - no máximo 30 dias
+                if (finalPubDate) {
+                    const pubDateObj = new Date(finalPubDate.split('/').reverse().join('-'));
+                    const now = new Date();
+                    const daysDiff = Math.floor((now - pubDateObj) / (1000 * 60 * 60 * 24));
+                    if (daysDiff > 30) {
+                        console.log(`        ✗ Skipped: News is ${daysDiff} days old (max 30)`);
+                        continue;
+                    }
+                }
 
                 let finalSummary = articleSummary;
                 // Ensure finalSummary is a string before processing

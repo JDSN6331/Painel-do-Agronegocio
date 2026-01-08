@@ -105,7 +105,7 @@ const CooxupeCategory = ({ title, news }: CooxupeCategoryProps) => {
             {/* Secondary Cards - Compact Horizontal */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {secondaryNews.map((item) => (
-                    <div key={item.id} className="glass-card cooxupe-secondary-card overflow-hidden">
+                    <div key={item.id} className="glass-card cooxupe-secondary-card overflow-hidden opacity-60 hover:opacity-100 transition-opacity duration-300">
                         <div className="flex gap-3 p-3">
                             {/* Small Image */}
                             <div className="w-24 h-20 flex-shrink-0 rounded-lg overflow-hidden">

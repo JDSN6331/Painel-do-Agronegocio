@@ -83,7 +83,7 @@ function saveNewsIfValid(filename, newData) {
     ensureOutputDir();
 
     const newCount = countNewsItems(newData);
-    const MIN_NEWS_REQUIRED = 22;
+    const MIN_NEWS_REQUIRED = 26;
 
     if (newCount < MIN_NEWS_REQUIRED) {
         console.log(`⚠️ Coleta retornou apenas ${newCount} notícias (mínimo: ${MIN_NEWS_REQUIRED})`);

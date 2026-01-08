@@ -58,7 +58,7 @@ const Header = () => {
             <img
               src="/Logo.png"
               alt="Logo Painel do Agronegócio"
-              className="w-[72px] h-[72px] md:w-20 md:h-20 object-contain"
+              className="w-16 h-16 md:w-20 md:h-20 object-contain"
             />
             <div className="flex flex-col items-center md:items-start text-center md:text-left gap-1">
               <h1 className="text-2xl md:text-3xl font-bold font-heading text-gold-gradient">

@@ -1,12 +1,13 @@
-import { Newspaper, Shield, Leaf, Tractor, Wheat, Beef, Milk, Coffee } from "lucide-react";
+import { Newspaper, Shield, Leaf, Tractor, Wheat, Beef, Milk, Coffee, Lightbulb } from "lucide-react";
 import NewsCategory from "./NewsCategory";
-import CooxupeCategory from "./CooxupeCategory";
+import CarouselCategory from "./CarouselCategory";
 import { LucideIcon } from "lucide-react";
 import { useNewsData } from "@/hooks/useDataUpdates";
 
 // Map category IDs to icons
 const iconMap: Record<string, LucideIcon> = {
     'cooxupe': Coffee,
+    'inovacao-agro': Lightbulb,
     'defensivos': Shield,
     'fertilizantes': Leaf,
     'maquinas-irrigacao': Tractor,
@@ -14,6 +15,9 @@ const iconMap: Record<string, LucideIcon> = {
     'gado-corte': Beef,
     'leite': Milk
 };
+
+// Categories that use the carousel layout
+const carouselCategories = ['cooxupe', 'inovacao-agro'];
 
 const NewsPanel = () => {
     const { categories, loading, error } = useNewsData();
@@ -67,10 +71,13 @@ const NewsPanel = () => {
                     key={category.id}
                     style={{ animationDelay: `${index * 0.1}s` }}
                 >
-                    {category.id === 'cooxupe' ? (
-                        <CooxupeCategory
+                    {carouselCategories.includes(category.id) ? (
+                        <CarouselCategory
                             title={category.title}
+                            icon={iconMap[category.id] || Newspaper}
                             news={category.news}
+                            variant="gold"
+                            categoryId={category.id}
                         />
                     ) : (
                         <NewsCategory
@@ -86,4 +93,3 @@ const NewsPanel = () => {
 };
 
 export default NewsPanel;
-

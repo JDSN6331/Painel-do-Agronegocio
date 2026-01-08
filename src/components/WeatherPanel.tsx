@@ -50,52 +50,52 @@ const WeatherPanel = () => {
   };
 
   return (
-    <div className="glass-panel p-4">
-      <div className="flex items-center justify-between mb-4">
-        <h2 className="text-lg font-semibold font-heading text-agro-gold flex items-center gap-2">
-          <Cloud className="w-5 h-5" />
+    <div className="glass-panel p-3 sm:p-4">
+      <div className="flex flex-wrap items-center justify-between gap-2 mb-3 sm:mb-4">
+        <h2 className="text-base sm:text-lg font-semibold font-heading text-agro-gold flex items-center gap-2">
+          <Cloud className="w-4 h-4 sm:w-5 sm:h-5" />
           Clima
         </h2>
-        <span className="text-xs text-muted-foreground">
+        <span className="text-[10px] sm:text-xs text-muted-foreground">
           <span className="font-semibold">Fonte:</span> Open-Meteo
         </span>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3">
         {weather.map((item) => (
           <div
             key={item.city}
-            className="weather-card flex p-3 rounded-lg bg-secondary/50 border border-border/50 transition-all duration-300 cursor-pointer"
+            className="glass-card weather-card flex p-2 sm:p-3 rounded-lg transition-all duration-300 cursor-pointer"
           >
             {/* Left side - existing data */}
             <div className="flex-1">
-              <div className="flex items-center gap-2 mb-3">
-                <span className="font-semibold text-foreground">
+              <div className="flex items-center gap-2 mb-2 sm:mb-3">
+                <span className="font-semibold text-sm sm:text-base text-foreground">
                   {item.city}/{item.state}
                 </span>
               </div>
-              <div className="grid grid-cols-3 gap-2 text-center">
+              <div className="grid grid-cols-3 gap-1 sm:gap-2 text-center">
                 <div className="flex flex-col items-center">
-                  <Thermometer className="w-4 h-4 text-agro-gold-light mb-1" />
-                  <span className="text-sm font-bold text-foreground">{item.temperature}°C</span>
-                  <span className="text-xs text-muted-foreground">Temp.</span>
+                  <Thermometer className="w-3 h-3 sm:w-4 sm:h-4 text-agro-gold-light mb-0.5 sm:mb-1" />
+                  <span className="text-xs sm:text-sm font-bold text-foreground">{item.temperature}°C</span>
+                  <span className="text-[10px] sm:text-xs text-muted-foreground">Temp.</span>
                 </div>
                 <div className="flex flex-col items-center">
-                  <Droplets className="w-4 h-4 text-blue-400 mb-1" />
-                  <span className="text-sm font-bold text-foreground">{item.humidity}%</span>
-                  <span className="text-xs text-muted-foreground">Umidade</span>
+                  <Droplets className="w-3 h-3 sm:w-4 sm:h-4 text-blue-400 mb-0.5 sm:mb-1" />
+                  <span className="text-xs sm:text-sm font-bold text-foreground">{item.humidity}%</span>
+                  <span className="text-[10px] sm:text-xs text-muted-foreground">Umidade</span>
                 </div>
                 <div className="flex flex-col items-center">
-                  <CloudRain className="w-4 h-4 text-blue-300 mb-1" />
-                  <span className="text-sm font-bold text-foreground">{item.rainProbability}%</span>
-                  <span className="text-xs text-muted-foreground">Chuva</span>
+                  <CloudRain className="w-3 h-3 sm:w-4 sm:h-4 text-blue-300 mb-0.5 sm:mb-1" />
+                  <span className="text-xs sm:text-sm font-bold text-foreground">{item.rainProbability}%</span>
+                  <span className="text-[10px] sm:text-xs text-muted-foreground">Chuva</span>
                 </div>
               </div>
             </div>
 
             {/* Right side - weather condition */}
-            <div className="flex flex-col items-center justify-center ml-3 pl-3 border-l border-border/50 min-w-[80px]">
+            <div className="flex flex-col items-center justify-center ml-2 sm:ml-3 pl-2 sm:pl-3 border-l border-border/50 min-w-[60px] sm:min-w-[80px]">
               {getConditionIcon(item.conditionIcon)}
-              <span className="text-xs text-muted-foreground mt-1 text-center">
+              <span className="text-[10px] sm:text-xs text-muted-foreground mt-1 text-center">
                 {item.condition || 'Carregando...'}
               </span>
             </div>
