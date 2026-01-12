@@ -39,6 +39,32 @@ function randomDelay(minMs, maxMs) {
     return delay(delayTime);
 }
 
+/**
+ * Wrapper para retry automático em caso de falha
+ * @param {Function} scrapeFn - Função de scraping a executar
+ * @param {Object} browser - Instância do Puppeteer browser
+ * @param {string} name - Nome da cotação para logs
+ * @param {number} maxAttempts - Número máximo de tentativas (padrão: 3)
+ * @returns {Promise<Object|null>} - Resultado da scraping ou null se falhar
+ */
+async function withRetry(scrapeFn, browser, name, maxAttempts = 3) {
+    for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+        try {
+            const result = await scrapeFn();
+            return result;
+        } catch (error) {
+            if (attempt < maxAttempts) {
+                const backoffDelay = Math.min(1000 * Math.pow(2, attempt - 1), 8000); // exponential backoff
+                console.log(`    ⚠️ Tentativa ${attempt}/${maxAttempts} falhou. Aguardando ${backoffDelay}ms antes de tentar novamente...`);
+                await delay(backoffDelay);
+            } else {
+                console.error(`    ❌ Falha após ${maxAttempts} tentativas de coletar ${name}:`, error.message);
+                return null;
+            }
+        }
+    }
+}
+
 function formatCurrency(value, decimals = 2) {
     return value.toLocaleString('pt-BR', {
         minimumFractionDigits: decimals,
@@ -77,54 +103,54 @@ async function setupPage(browser) {
  */
 async function scrapeDolar(browser) {
     console.log('  📈 Coletando Dólar...');
-    let page = null;
+    
+    return withRetry(async () => {
+        let page = null;
+        try {
+            page = await setupPage(browser);
+            await page.goto(NA_URLS.dolar, { waitUntil: 'networkidle2', timeout: 30000 });
+            await page.waitForSelector('table.cot-fisicas', { timeout: 10000 });
 
-    try {
-        page = await setupPage(browser);
-        await page.goto(NA_URLS.dolar, { waitUntil: 'networkidle2', timeout: 30000 });
-        await page.waitForSelector('table.cot-fisicas', { timeout: 10000 });
-
-        const data = await page.evaluate(() => {
-            const tables = document.querySelectorAll('table.cot-fisicas');
-            for (const table of tables) {
-                const rows = table.querySelectorAll('tbody tr');
-                for (const row of rows) {
-                    const cells = row.querySelectorAll('td');
-                    if (cells.length >= 3) {
-                        const currency = cells[0].innerText.trim();
-                        if (currency === 'Dólar' || currency.toLowerCase().includes('dólar')) {
-                            return {
-                                price: cells[1].innerText.trim(),
-                                variation: cells[2].innerText.trim()
-                            };
+            const data = await page.evaluate(() => {
+                const tables = document.querySelectorAll('table.cot-fisicas');
+                for (const table of tables) {
+                    const rows = table.querySelectorAll('tbody tr');
+                    for (const row of rows) {
+                        const cells = row.querySelectorAll('td');
+                        if (cells.length >= 3) {
+                            const currency = cells[0].innerText.trim();
+                            if (currency === 'Dólar' || currency.toLowerCase().includes('dólar')) {
+                                return {
+                                    price: cells[1].innerText.trim(),
+                                    variation: cells[2].innerText.trim()
+                                };
+                            }
                         }
                     }
                 }
+                return null;
+            });
+
+            await page.close();
+
+            if (!data) {
+                throw new Error('Dólar não encontrado na página');
             }
-            return null;
-        });
 
-        await page.close();
+            const priceValue = parseNumber(data.price);
+            const variationValue = parseVariation(data.variation);
+            console.log(`    ✅ Dólar: R$ ${formatCurrency(priceValue)} (${variationValue >= 0 ? '+' : ''}${variationValue.toFixed(2)}%)`);
 
-        if (!data) {
-            console.log('    ⚠️ Dólar não encontrado');
-            return null;
+            return {
+                name: 'Dólar',
+                value: `R$ ${formatCurrency(priceValue)}`,
+                change: parseFloat(variationValue.toFixed(2))
+            };
+        } catch (error) {
+            if (page) await page.close().catch(() => { });
+            throw error;
         }
-
-        const priceValue = parseNumber(data.price);
-        const variationValue = parseVariation(data.variation);
-        console.log(`    ✅ Dólar: R$ ${formatCurrency(priceValue)} (${variationValue >= 0 ? '+' : ''}${variationValue.toFixed(2)}%)`);
-
-        return {
-            name: 'Dólar',
-            value: `R$ ${formatCurrency(priceValue)}`,
-            change: parseFloat(variationValue.toFixed(2))
-        };
-    } catch (error) {
-        if (page) await page.close().catch(() => { });
-        console.error('    ❌ Erro ao coletar Dólar:', error.message);
-        return null;
-    }
+    }, browser, 'Dólar');
 }
 
 /**
@@ -132,55 +158,55 @@ async function scrapeDolar(browser) {
  */
 async function scrapeCafeICE(browser) {
     console.log('  ☕ Coletando Café ICE NY...');
-    let page = null;
+    
+    return withRetry(async () => {
+        let page = null;
+        try {
+            page = await setupPage(browser);
+            await page.goto(NA_URLS.cafeICE, { waitUntil: 'networkidle2', timeout: 30000 });
+            await page.waitForSelector('table.cot-fisicas', { timeout: 10000 });
 
-    try {
-        page = await setupPage(browser);
-        await page.goto(NA_URLS.cafeICE, { waitUntil: 'networkidle2', timeout: 30000 });
-        await page.waitForSelector('table.cot-fisicas', { timeout: 10000 });
+            const data = await page.evaluate(() => {
+                const table = document.querySelector('table.cot-fisicas');
+                if (!table) return null;
 
-        const data = await page.evaluate(() => {
-            const table = document.querySelector('table.cot-fisicas');
-            if (!table) return null;
+                const firstRow = table.querySelector('tbody tr:first-child');
+                if (!firstRow) return null;
 
-            const firstRow = table.querySelector('tbody tr:first-child');
-            if (!firstRow) return null;
+                const cells = firstRow.querySelectorAll('td');
+                if (cells.length < 4) return null;
 
-            const cells = firstRow.querySelectorAll('td');
-            if (cells.length < 4) return null;
+                return {
+                    month: cells[0].innerText.trim(),
+                    priceUSD: cells[1].innerText.trim(),
+                    priceBRL: cells[2].innerText.trim(),
+                    variationPoints: cells[3].innerText.trim()
+                };
+            });
+
+            await page.close();
+
+            if (!data) {
+                throw new Error('Café ICE NY não encontrado na página');
+            }
+
+            const priceValue = parseNumber(data.priceBRL);
+            const variationPoints = parseVariation(data.variationPoints);
+            const priceUSD = parseNumber(data.priceUSD);
+            const variationPercent = priceUSD > 0 ? (variationPoints / priceUSD) * 100 : 0;
+
+            console.log(`    ✅ Café ICE NY: R$ ${formatCurrency(priceValue)} (${variationPercent >= 0 ? '+' : ''}${variationPercent.toFixed(2)}%)`);
 
             return {
-                month: cells[0].innerText.trim(),
-                priceUSD: cells[1].innerText.trim(),
-                priceBRL: cells[2].innerText.trim(),
-                variationPoints: cells[3].innerText.trim()
+                name: 'Café ICE NY',
+                value: `R$ ${formatCurrency(priceValue)}`,
+                change: parseFloat(variationPercent.toFixed(2))
             };
-        });
-
-        await page.close();
-
-        if (!data) {
-            console.log('    ⚠️ Café ICE NY não encontrado');
-            return null;
+        } catch (error) {
+            if (page) await page.close().catch(() => { });
+            throw error;
         }
-
-        const priceValue = parseNumber(data.priceBRL);
-        const variationPoints = parseVariation(data.variationPoints);
-        const priceUSD = parseNumber(data.priceUSD);
-        const variationPercent = priceUSD > 0 ? (variationPoints / priceUSD) * 100 : 0;
-
-        console.log(`    ✅ Café ICE NY: R$ ${formatCurrency(priceValue)} (${variationPercent >= 0 ? '+' : ''}${variationPercent.toFixed(2)}%)`);
-
-        return {
-            name: 'Café ICE NY',
-            value: `R$ ${formatCurrency(priceValue)}`,
-            change: parseFloat(variationPercent.toFixed(2))
-        };
-    } catch (error) {
-        if (page) await page.close().catch(() => { });
-        console.error('    ❌ Erro ao coletar Café ICE NY:', error.message);
-        return null;
-    }
+    }, browser, 'Café ICE NY');
 }
 
 /**
@@ -189,60 +215,60 @@ async function scrapeCafeICE(browser) {
  */
 async function scrapeIndicator(browser, url, name) {
     console.log(`  📊 Coletando ${name}...`);
-    let page = null;
+    
+    return withRetry(async () => {
+        let page = null;
+        try {
+            page = await setupPage(browser);
+            await page.goto(url, { waitUntil: 'networkidle2', timeout: 30000 });
+            await page.waitForSelector('table.cot-fisicas', { timeout: 10000 });
 
-    try {
-        page = await setupPage(browser);
-        await page.goto(url, { waitUntil: 'networkidle2', timeout: 30000 });
-        await page.waitForSelector('table.cot-fisicas', { timeout: 10000 });
+            const data = await page.evaluate(() => {
+                const tables = document.querySelectorAll('table.cot-fisicas');
 
-        const data = await page.evaluate(() => {
-            const tables = document.querySelectorAll('table.cot-fisicas');
+                for (const table of tables) {
+                    const headerText = table.querySelector('thead')?.innerText || '';
+                    // Aceita "Valor", "à vista R$", ou apenas "R$" como indicadores de coluna de preço
+                    const hasPrice = headerText.includes('Valor') || headerText.includes('à vista') || headerText.includes('R$');
+                    const hasVariation = headerText.includes('Variação');
 
-            for (const table of tables) {
-                const headerText = table.querySelector('thead')?.innerText || '';
-                // Aceita "Valor", "à vista R$", ou apenas "R$" como indicadores de coluna de preço
-                const hasPrice = headerText.includes('Valor') || headerText.includes('à vista') || headerText.includes('R$');
-                const hasVariation = headerText.includes('Variação');
-
-                if (hasPrice && hasVariation) {
-                    const firstRow = table.querySelector('tbody tr:first-child');
-                    if (firstRow) {
-                        const cells = firstRow.querySelectorAll('td');
-                        if (cells.length >= 3) {
-                            return {
-                                price: cells[1].innerText.trim(),
-                                variation: cells[2].innerText.trim()
-                            };
+                    if (hasPrice && hasVariation) {
+                        const firstRow = table.querySelector('tbody tr:first-child');
+                        if (firstRow) {
+                            const cells = firstRow.querySelectorAll('td');
+                            if (cells.length >= 3) {
+                                return {
+                                    price: cells[1].innerText.trim(),
+                                    variation: cells[2].innerText.trim()
+                                };
+                            }
                         }
                     }
                 }
+                return null;
+            });
+
+            await page.close();
+
+            if (!data) {
+                throw new Error(`${name} não encontrado na página`);
             }
-            return null;
-        });
 
-        await page.close();
+            const priceValue = parseNumber(data.price);
+            const variationValue = parseVariation(data.variation);
 
-        if (!data) {
-            console.log(`    ⚠️ ${name} não encontrado`);
-            return null;
+            console.log(`    ✅ ${name}: R$ ${formatCurrency(priceValue)} (${variationValue >= 0 ? '+' : ''}${variationValue.toFixed(2)}%)`);
+
+            return {
+                name,
+                value: `R$ ${formatCurrency(priceValue)}`,
+                change: parseFloat(variationValue.toFixed(2))
+            };
+        } catch (error) {
+            if (page) await page.close().catch(() => { });
+            throw error;
         }
-
-        const priceValue = parseNumber(data.price);
-        const variationValue = parseVariation(data.variation);
-
-        console.log(`    ✅ ${name}: R$ ${formatCurrency(priceValue)} (${variationValue >= 0 ? '+' : ''}${variationValue.toFixed(2)}%)`);
-
-        return {
-            name,
-            value: `R$ ${formatCurrency(priceValue)}`,
-            change: parseFloat(variationValue.toFixed(2))
-        };
-    } catch (error) {
-        if (page) await page.close().catch(() => { });
-        console.error(`    ❌ Erro ao coletar ${name}:`, error.message);
-        return null;
-    }
+    }, browser, name);
 }
 
 /**
@@ -250,60 +276,60 @@ async function scrapeIndicator(browser, url, name) {
  */
 async function scrapeLeite(browser) {
     console.log('  🥛 Coletando Leite (MG)...');
-    let page = null;
-
-    try {
-        page = await setupPage(browser);
-        await page.goto(NA_URLS.leite, { waitUntil: 'networkidle2', timeout: 30000 });
-
-        // Tentar fechar modal se existir
+    
+    return withRetry(async () => {
+        let page = null;
         try {
-            await page.click('.fechar-box, .close-modal, [class*="close"]', { timeout: 2000 });
-        } catch {
-            // Sem modal para fechar
-        }
+            page = await setupPage(browser);
+            await page.goto(NA_URLS.leite, { waitUntil: 'networkidle2', timeout: 30000 });
 
-        await page.waitForSelector('table.cot-fisicas', { timeout: 10000 });
+            // Tentar fechar modal se existir
+            try {
+                await page.click('.fechar-box, .close-modal, [class*="close"]', { timeout: 2000 });
+            } catch {
+                // Sem modal para fechar
+            }
 
-        const data = await page.evaluate(() => {
-            const tables = document.querySelectorAll('table.cot-fisicas');
-            for (const table of tables) {
-                const rows = table.querySelectorAll('tbody tr');
-                for (const row of rows) {
-                    const cells = row.querySelectorAll('td');
-                    if (cells.length >= 3 && cells[0].innerText.trim() === 'MG') {
-                        return {
-                            price: cells[1].innerText.trim(),
-                            variation: cells[2].innerText.trim()
-                        };
+            await page.waitForSelector('table.cot-fisicas', { timeout: 10000 });
+
+            const data = await page.evaluate(() => {
+                const tables = document.querySelectorAll('table.cot-fisicas');
+                for (const table of tables) {
+                    const rows = table.querySelectorAll('tbody tr');
+                    for (const row of rows) {
+                        const cells = row.querySelectorAll('td');
+                        if (cells.length >= 3 && cells[0].innerText.trim() === 'MG') {
+                            return {
+                                price: cells[1].innerText.trim(),
+                                variation: cells[2].innerText.trim()
+                            };
+                        }
                     }
                 }
+                return null;
+            });
+
+            await page.close();
+
+            if (!data) {
+                throw new Error('Leite (MG) não encontrado na página');
             }
-            return null;
-        });
 
-        await page.close();
+            const priceValue = parseNumber(data.price);
+            const variationValue = parseVariation(data.variation);
 
-        if (!data) {
-            console.log('    ⚠️ Leite (MG) não encontrado');
-            return null;
+            console.log(`    ✅ Leite (MG): R$ ${formatCurrency(priceValue, 2)} (${variationValue >= 0 ? '+' : ''}${variationValue.toFixed(2)}%)`);
+
+            return {
+                name: 'Leite',
+                value: `R$ ${formatCurrency(priceValue, 2)}`,
+                change: parseFloat(variationValue.toFixed(2))
+            };
+        } catch (error) {
+            if (page) await page.close().catch(() => { });
+            throw error;
         }
-
-        const priceValue = parseNumber(data.price);
-        const variationValue = parseVariation(data.variation);
-
-        console.log(`    ✅ Leite (MG): R$ ${formatCurrency(priceValue, 2)} (${variationValue >= 0 ? '+' : ''}${variationValue.toFixed(2)}%)`);
-
-        return {
-            name: 'Leite',
-            value: `R$ ${formatCurrency(priceValue, 2)}`,
-            change: parseFloat(variationValue.toFixed(2))
-        };
-    } catch (error) {
-        if (page) await page.close().catch(() => { });
-        console.error('    ❌ Erro ao coletar Leite:', error.message);
-        return null;
-    }
+    }, browser, 'Leite');
 }
 
 /**
