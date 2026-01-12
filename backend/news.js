@@ -1322,6 +1322,46 @@ async function fetchCategoryNews(browser, category) {
             allNews.push(...subNews);
         }
 
+        // === FALLBACK LOGIC FOR maquinas-irrigacao ===
+        // If "irrigacao" didn't reach its quota (1 news), fill with extra "maquinas" news
+        if (category.id === 'maquinas-irrigacao') {
+            const irrigacaoNews = allNews.filter(n => n.subcategory === 'irrigacao');
+            const irrigacaoQuota = category.subcategories.find(s => s.subId === 'irrigacao')?.quota || 1;
+            const irrigacaoMissing = irrigacaoQuota - irrigacaoNews.length;
+
+            if (irrigacaoMissing > 0) {
+                console.log(`    ⚠️ Irrigação missing ${irrigacaoMissing} news, using fallback to Máquinas...`);
+
+                // Find the maquinas subcategory config
+                const maquinasSub = category.subcategories.find(s => s.subId === 'maquinas');
+                if (maquinasSub) {
+                    console.log(`    ⏳ Waiting before fallback search...`);
+                    await randomDelay(5000, 8000);
+
+                    // Update existingTitles with all collected titles so far
+                    const collectedTitles = allNews.map(n => n.title);
+
+                    // Fetch extra maquinas news to fill the gap
+                    const fallbackNews = await fetchNewsForQuery(
+                        browser,
+                        maquinasSub.searchQuery,
+                        'maquinas', // Keep original subId for filtering
+                        category.id,
+                        irrigacaoMissing, // Only fetch what's missing
+                        collectedTitles
+                    );
+
+                    if (fallbackNews.length > 0) {
+                        console.log(`    ✅ Fallback: Got ${fallbackNews.length} extra Máquinas news`);
+                        allNews.push(...fallbackNews);
+                    } else {
+                        console.log(`    ⚠️ Fallback: No extra Máquinas news found`);
+                    }
+                }
+            }
+        }
+        // === END FALLBACK LOGIC ===
+
         console.log(`  ✅ Total for ${category.title}: ${allNews.length} news`);
         return allNews;
     }
