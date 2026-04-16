@@ -47,7 +47,7 @@ const Index = () => {
             </p>
             <hr className="border-muted-foreground/30 w-72 mx-auto my-3" />
             <p className="text-xs text-muted-foreground">
-              Desenvolvido pela Inteligência de Mercado
+              Desenvolvido por José Duque da Silva Neto
             </p>
           </div>
         </footer>

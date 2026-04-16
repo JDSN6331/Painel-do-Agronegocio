@@ -1,5 +1,8 @@
 import Parser from 'rss-parser';
 import puppeteer from 'puppeteer';
+import os from 'os';
+import path from 'path';
+import fs from 'fs';
 
 const parser = new Parser({
     customFields: {
@@ -36,6 +39,28 @@ function delay(ms) {
 function randomDelay(minMs, maxMs) {
     const delayTime = Math.floor(Math.random() * (maxMs - minMs + 1)) + minMs;
     return delay(delayTime);
+}
+
+/**
+ * Safely clean up a temporary directory with retry
+ */
+function cleanupTempDir(dirPath) {
+    if (!dirPath) return;
+    setTimeout(() => {
+        try {
+            if (fs.existsSync(dirPath)) {
+                fs.rmSync(dirPath, { recursive: true, force: true });
+            }
+        } catch (err) {
+            setTimeout(() => {
+                try {
+                    if (fs.existsSync(dirPath)) {
+                        fs.rmSync(dirPath, { recursive: true, force: true });
+                    }
+                } catch {}
+            }, 10000);
+        }
+    }, 3000);
 }
 
 // Progressive period sequence (in days) - starts with 1 day for freshest news
@@ -1395,9 +1420,11 @@ export async function collectNews() {
     console.log(`━━━ Date: ${getTodayBrazil()} ━━━`);
 
     let browser;
+    const userDataDir = path.join(os.tmpdir(), `puppeteer_news_legacy_${Date.now()}_${Math.random().toString(36).substr(2, 8)}`);
     try {
         browser = await puppeteer.launch({
             headless: 'new',
+            userDataDir,
             args: [
                 '--no-sandbox',
                 '--disable-setuid-sandbox',
@@ -1411,6 +1438,7 @@ export async function collectNews() {
         console.log('  ✅ Browser launched');
     } catch (error) {
         console.error('❌ Failed to launch browser:', error.message);
+        cleanupTempDir(userDataDir);
         return { lastUpdate: new Date().toISOString(), categories: [], sources: NEWS_SOURCES };
     }
 
@@ -1436,8 +1464,14 @@ export async function collectNews() {
             }
         }
     } finally {
-        await browser.close();
+        try {
+            await browser.close();
+        } catch (closeErr) {
+            console.error('⚠️ Erro ao fechar browser:', closeErr.message);
+            try { browser.process()?.kill(); } catch {}
+        }
         console.log('  ✅ Browser closed');
+        cleanupTempDir(userDataDir);
     }
 
     console.log('\n━━━ Collection Summary ━━━');
@@ -1480,8 +1514,10 @@ export function getCategoryCount() {
  * Launch browser for news collection
  */
 export async function launchNewsBrowser() {
+    const userDataDir = path.join(os.tmpdir(), `puppeteer_news_${Date.now()}_${Math.random().toString(36).substr(2, 8)}`);
     const browser = await puppeteer.launch({
         headless: 'new',
+        userDataDir,
         args: [
             '--no-sandbox',
             '--disable-setuid-sandbox',
@@ -1492,6 +1528,8 @@ export async function launchNewsBrowser() {
             '--window-size=1920,1080'
         ]
     });
+    // Attach userDataDir to browser for cleanup on close
+    browser._customUserDataDir = userDataDir;
     return browser;
 }
 
@@ -1499,9 +1537,17 @@ export async function launchNewsBrowser() {
  * Close browser
  */
 export async function closeNewsBrowser(browser) {
-    if (browser) {
+    if (!browser) return;
+    const userDataDir = browser._customUserDataDir;
+    try {
         await browser.close();
+    } catch (closeErr) {
+        console.error('⚠️ Erro ao fechar browser de notícias:', closeErr.message);
+        // Force kill the Chrome process if close fails
+        try { browser.process()?.kill(); } catch {}
     }
+    // Clean up the temporary profile directory
+    cleanupTempDir(userDataDir);
 }
 
 /**

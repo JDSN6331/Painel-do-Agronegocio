@@ -1,4 +1,7 @@
 import puppeteer from 'puppeteer';
+import os from 'os';
+import path from 'path';
+import fs from 'fs';
 
 // ===========================================
 // NOTÍCIAS AGRÍCOLAS - FONTE ÚNICA DE COTAÇÕES
@@ -37,6 +40,30 @@ function delay(ms) {
 function randomDelay(minMs, maxMs) {
     const delayTime = Math.floor(Math.random() * (maxMs - minMs + 1)) + minMs;
     return delay(delayTime);
+}
+
+/**
+ * Safely clean up a temporary directory with retry
+ */
+function cleanupTempDir(dirPath) {
+    if (!dirPath) return;
+    // Delay cleanup to give Chrome time to fully release files
+    setTimeout(() => {
+        try {
+            if (fs.existsSync(dirPath)) {
+                fs.rmSync(dirPath, { recursive: true, force: true });
+            }
+        } catch (err) {
+            // Retry once more after a longer delay
+            setTimeout(() => {
+                try {
+                    if (fs.existsSync(dirPath)) {
+                        fs.rmSync(dirPath, { recursive: true, force: true });
+                    }
+                } catch {}
+            }, 10000);
+        }
+    }, 3000);
 }
 
 /**
@@ -108,7 +135,7 @@ async function scrapeDolar(browser) {
         let page = null;
         try {
             page = await setupPage(browser);
-            await page.goto(NA_URLS.dolar, { waitUntil: 'networkidle2', timeout: 30000 });
+            await page.goto(NA_URLS.dolar, { waitUntil: 'domcontentloaded', timeout: 30000 });
             await page.waitForSelector('table.cot-fisicas', { timeout: 10000 });
 
             const data = await page.evaluate(() => {
@@ -163,7 +190,7 @@ async function scrapeCafeICE(browser) {
         let page = null;
         try {
             page = await setupPage(browser);
-            await page.goto(NA_URLS.cafeICE, { waitUntil: 'networkidle2', timeout: 30000 });
+            await page.goto(NA_URLS.cafeICE, { waitUntil: 'domcontentloaded', timeout: 30000 });
             await page.waitForSelector('table.cot-fisicas', { timeout: 10000 });
 
             const data = await page.evaluate(() => {
@@ -220,7 +247,7 @@ async function scrapeIndicator(browser, url, name) {
         let page = null;
         try {
             page = await setupPage(browser);
-            await page.goto(url, { waitUntil: 'networkidle2', timeout: 30000 });
+            await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 30000 });
             await page.waitForSelector('table.cot-fisicas', { timeout: 10000 });
 
             const data = await page.evaluate(() => {
@@ -281,7 +308,7 @@ async function scrapeLeite(browser) {
         let page = null;
         try {
             page = await setupPage(browser);
-            await page.goto(NA_URLS.leite, { waitUntil: 'networkidle2', timeout: 30000 });
+            await page.goto(NA_URLS.leite, { waitUntil: 'domcontentloaded', timeout: 30000 });
 
             // Tentar fechar modal se existir
             try {
@@ -345,9 +372,11 @@ export async function collectQuotes() {
 
     console.log('\n🌐 Iniciando browser...');
     let browser;
+    const userDataDir = path.join(os.tmpdir(), `puppeteer_quotes_${Date.now()}_${Math.random().toString(36).substr(2, 8)}`);
     try {
         browser = await puppeteer.launch({
-            headless: true,
+            headless: 'new',
+            userDataDir,
             args: [
                 '--no-sandbox',
                 '--disable-setuid-sandbox',
@@ -362,6 +391,7 @@ export async function collectQuotes() {
         });
     } catch (browserError) {
         console.error('❌ Falha ao iniciar browser:', browserError.message);
+        cleanupTempDir(userDataDir);
         return { lastUpdate: new Date().toISOString(), quotes };
     }
 
@@ -405,8 +435,14 @@ export async function collectQuotes() {
         if (leite) quotes.push(leite);
 
     } finally {
-        await browser.close();
+        try {
+            await browser.close();
+        } catch (closeErr) {
+            console.error('⚠️ Erro ao fechar browser:', closeErr.message);
+            try { browser.process()?.kill(); } catch {}
+        }
         console.log('\n🌐 Browser fechado.');
+        cleanupTempDir(userDataDir);
     }
 
     console.log('━'.repeat(50));

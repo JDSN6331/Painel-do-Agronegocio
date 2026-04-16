@@ -16,6 +16,26 @@ import {
     buildNewsData
 } from './news.js';
 
+// ═══════════════════════════════════════════════════════════════════
+// GLOBAL ERROR HANDLERS - Prevent process crash on unhandled errors
+// ═══════════════════════════════════════════════════════════════════
+
+process.on('unhandledRejection', (reason, promise) => {
+    console.error('⚠️ Unhandled Rejection (não fatal):', reason?.message || reason);
+    // Don't crash the process - just log the error
+});
+
+process.on('uncaughtException', (error) => {
+    // Only crash on truly fatal errors, not EBUSY/file system issues
+    if (error.code === 'EBUSY' || error.code === 'EPERM' || error.code === 'ENOENT') {
+        console.error('⚠️ Erro de filesystem ignorado:', error.message);
+        return;
+    }
+    console.error('💥 Uncaught Exception:', error.message);
+    console.error(error.stack);
+    process.exit(1);
+});
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -85,6 +105,12 @@ function saveNewsIfValid(filename, newData) {
     const newCount = countNewsItems(newData);
     const MIN_NEWS_REQUIRED = 26;
 
+    // Never save empty data
+    if (newCount === 0) {
+        console.log(`⚠️ Coleta retornou 0 notícias - não salvando arquivo vazio`);
+        return false;
+    }
+
     if (newCount < MIN_NEWS_REQUIRED) {
         console.log(`⚠️ Coleta retornou apenas ${newCount} notícias (mínimo: ${MIN_NEWS_REQUIRED})`);
 
@@ -117,6 +143,12 @@ function saveQuotesIfValid(filename, newData) {
     const newCount = newData?.quotes?.length || 0;
     const MIN_QUOTES_REQUIRED = 7;
     let previousCount = 0;
+
+    // Never save empty data
+    if (newCount === 0) {
+        console.log(`⚠️ Coleta retornou 0 cotações - não salvando arquivo vazio`);
+        return false;
+    }
 
     if (fs.existsSync(filename)) {
         try {
@@ -157,6 +189,12 @@ function saveWeatherIfValid(filename, newData) {
     const newCount = newData?.weather?.length || 0;
     const MIN_WEATHER_REQUIRED = 4;
     let previousCount = 0;
+
+    // Never save empty data
+    if (newCount === 0) {
+        console.log(`⚠️ Coleta retornou 0 cidades - não salvando arquivo vazio`);
+        return false;
+    }
 
     if (fs.existsSync(filename)) {
         try {
@@ -307,8 +345,16 @@ async function runHeavyCycle() {
     try {
         // Launch browser
         console.log('\n🌐 Launching browser...');
-        browser = await launchNewsBrowser();
-        console.log('  ✅ Browser launched');
+        try {
+            browser = await launchNewsBrowser();
+            console.log('  ✅ Browser launched');
+        } catch (browserError) {
+            console.error('❌ Falha ao iniciar browser de notícias:', browserError.message);
+            isHeavyCycleRunning = false;
+            // Schedule next heavy cycle even on failure
+            setTimeout(() => runHeavyCycle(), HEAVY_CYCLE_INTERVAL_MS);
+            return;
+        }
 
         // Collect each category, checking for fast cycle between each
         for (let i = 0; i < categoryCount; i++) {
@@ -333,8 +379,13 @@ async function runHeavyCycle() {
                 // Reopen browser to continue
                 console.log('\n▶️ Retomando coleta de notícias...');
                 console.log('🌐 Reabrindo browser...');
-                browser = await launchNewsBrowser();
-                console.log('  ✅ Browser relaunched');
+                try {
+                    browser = await launchNewsBrowser();
+                    console.log('  ✅ Browser relaunched');
+                } catch (relaunchError) {
+                    console.error('❌ Falha ao reabrir browser:', relaunchError.message);
+                    break; // Exit the category loop, save what we have
+                }
             }
 
             // Collect this category
