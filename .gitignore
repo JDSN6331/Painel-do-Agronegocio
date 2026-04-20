@@ -23,5 +23,5 @@ dist-ssr
 *.sln
 *.sw?
 
-# Data files (generated in AWS EC2)
-public/data/*.json
+# Ignore nested duplicate repo (avoid submodule issues)
+Painel-do-Agronegocio/

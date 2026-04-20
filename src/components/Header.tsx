@@ -1,5 +1,6 @@
 import { RefreshCw, CheckCircle } from "lucide-react";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useGlobalLastUpdate } from "@/hooks/useDataUpdates";
 
 const Header = () => {
@@ -52,7 +53,7 @@ const Header = () => {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 glass-panel rounded-none border-x-0 border-t-0">
       <div className="container mx-auto px-4 py-4">
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
           {/* Title Section */}
           <div className="flex items-center gap-4">
             <img
@@ -60,15 +61,23 @@ const Header = () => {
               alt="Logo Painel do Agronegócio"
               className="w-16 h-16 md:w-20 md:h-20 object-contain"
             />
-            <div className="flex flex-col items-center md:items-start text-center md:text-left gap-1">
+            <div className="flex flex-col items-center lg:items-start text-center lg:text-left gap-1">
               <h1 className="text-2xl md:text-3xl font-bold font-heading text-gold-gradient">
                 Painel do Agronegócio
               </h1>
-              <p className="text-sm text-muted-foreground">
-                Monitoramento das principais notícias do agronegócio brasileiro
+              <p className="text-sm text-muted-foreground max-w-[320px] md:max-w-[400px]">
+                Plataforma com dados atualizados do agronegócio brasileiro: cotações, clima e notícias em tempo real.
               </p>
             </div>
           </div>
+
+          {/* Navigation Menu */}
+          <nav className="flex items-center justify-center gap-4 md:gap-6 text-sm text-muted-foreground">
+            <Link to="/" className="hover:text-agro-gold transition-colors block py-2">Início</Link>
+            <Link to="/sobre" className="hover:text-agro-gold transition-colors block py-2">Sobre</Link>
+            <Link to="/contato" className="hover:text-agro-gold transition-colors block py-2">Contato</Link>
+            <Link to="/privacidade" className="hover:text-agro-gold transition-colors block py-2">Privacidade</Link>
+          </nav>
 
           {/* Update Indicator - shows timestamp from JSON files */}
           <div className="flex items-center justify-center gap-3">
