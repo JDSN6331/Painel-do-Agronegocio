@@ -43,7 +43,7 @@ const Index = () => {
               Notícias coletadas automaticamente via Google News RSS
             </p>
             <p className="text-muted-foreground text-sm">
-              © 2025 Painel do Agronegócio
+              © 2026 Painel do Agronegócio
             </p>
             <hr className="border-muted-foreground/30 w-72 mx-auto my-3" />
             <p className="text-xs text-muted-foreground">
