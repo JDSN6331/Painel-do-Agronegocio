@@ -76,7 +76,7 @@ const Privacidade = () => {
         <footer className="glass-panel rounded-none border-x-0 border-b-0 py-6 mt-auto">
           <div className="container mx-auto px-4 text-center">
             <p className="text-muted-foreground text-sm">
-              © 2025 Painel do Agronegócio
+              © 2026 Painel do Agronegócio
             </p>
             <hr className="border-muted-foreground/30 w-72 mx-auto my-3" />
             <p className="text-xs text-muted-foreground">
