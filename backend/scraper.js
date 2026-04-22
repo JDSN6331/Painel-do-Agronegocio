@@ -122,6 +122,23 @@ async function setupPage(browser) {
         'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
     });
     await page.setViewport({ width: 1920, height: 1080 });
+
+    // Bloqueia recursos desnecessários para carregar absurdamente rápido e evitar timeouts
+    await page.setRequestInterception(true);
+    page.on('request', (req) => {
+        const resourceType = req.resourceType();
+        if (['image', 'stylesheet', 'font', 'media'].includes(resourceType)) {
+            req.abort();
+        } else {
+            const url = req.url().toLowerCase();
+            if (url.includes('google-analytics') || url.includes('doubleclick') || url.includes('ads') || url.includes('googlesyndication') || url.includes('taboola')) {
+                req.abort();
+            } else {
+                req.continue();
+            }
+        }
+    });
+
     return page;
 }
 
@@ -135,7 +152,7 @@ async function scrapeDolar(browser) {
         let page = null;
         try {
             page = await setupPage(browser);
-            await page.goto(NA_URLS.dolar, { waitUntil: 'networkidle2', timeout: 30000 });
+            await page.goto(NA_URLS.dolar, { waitUntil: 'domcontentloaded', timeout: 30000 });
             await page.waitForSelector('table.cot-fisicas', { timeout: 10000 });
 
             const data = await page.evaluate(() => {
@@ -190,7 +207,7 @@ async function scrapeCafeICE(browser) {
         let page = null;
         try {
             page = await setupPage(browser);
-            await page.goto(NA_URLS.cafeICE, { waitUntil: 'networkidle2', timeout: 30000 });
+            await page.goto(NA_URLS.cafeICE, { waitUntil: 'domcontentloaded', timeout: 30000 });
             await page.waitForSelector('table.cot-fisicas', { timeout: 10000 });
 
             const data = await page.evaluate(() => {
@@ -247,7 +264,7 @@ async function scrapeIndicator(browser, url, name) {
         let page = null;
         try {
             page = await setupPage(browser);
-            await page.goto(url, { waitUntil: 'networkidle2', timeout: 30000 });
+            await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 30000 });
             await page.waitForSelector('table.cot-fisicas', { timeout: 10000 });
 
             const data = await page.evaluate(() => {
@@ -308,7 +325,7 @@ async function scrapeLeite(browser) {
         let page = null;
         try {
             page = await setupPage(browser);
-            await page.goto(NA_URLS.leite, { waitUntil: 'networkidle2', timeout: 30000 });
+            await page.goto(NA_URLS.leite, { waitUntil: 'domcontentloaded', timeout: 30000 });
 
             // Tentar fechar modal se existir
             try {
