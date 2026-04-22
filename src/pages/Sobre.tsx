@@ -22,11 +22,11 @@ const Sobre = () => {
         <Header />
 
         {/* Main Content with padding for fixed header */}
-        <main className="container mx-auto px-4 lg:pt-40 pt-56 pb-12 flex-grow flex items-center justify-center">
+        <main className="container mx-auto px-4 pt-[260px] sm:pt-56 lg:pt-40 pb-12 flex-grow flex items-center justify-center">
           <div className="glass-panel p-8 md:p-12 max-w-3xl w-full rounded-2xl animate-in fade-in-50 slide-in-from-bottom-4 duration-500">
-            <h1 className="text-3xl font-bold text-gold-gradient mb-8 font-heading text-center">Sobre o Painel do Agronegócio</h1>
+            <h1 className="text-2xl md:text-3xl font-bold text-gold-gradient mb-6 md:mb-8 font-heading text-center">Sobre o Painel do Agronegócio</h1>
             
-            <div className="space-y-6 text-muted-foreground leading-relaxed text-lg">
+            <div className="space-y-4 md:space-y-6 text-muted-foreground leading-relaxed text-base md:text-lg">
               <p>O <strong>Painel do Agronegócio</strong> é uma plataforma desenvolvida para reunir informações relevantes do setor agrícola brasileiro em um único lugar.</p>
 
               <p>Nosso objetivo é fornecer dados atualizados sobre cotações, clima e notícias do agronegócio, auxiliando produtores, investidores e profissionais do setor na tomada de decisões.</p>

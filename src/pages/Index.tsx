@@ -25,7 +25,7 @@ const Index = () => {
         <Header />
 
         {/* Main Content with padding for fixed header */}
-        <main className="container mx-auto px-3 sm:px-4 pt-44 sm:pt-40 md:pt-40 pb-8 sm:pb-12 flex-grow">
+        <main className="container mx-auto px-3 sm:px-4 pt-[280px] sm:pt-[200px] md:pt-48 lg:pt-40 pb-8 sm:pb-12 flex-grow">
           {/* Info Panels */}
           <div className="flex flex-col gap-4 mb-8">
             <QuotesPanel />

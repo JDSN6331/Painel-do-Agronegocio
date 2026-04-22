@@ -22,15 +22,15 @@ const Privacidade = () => {
         <Header />
 
         {/* Main Content with padding for fixed header */}
-        <main className="container mx-auto px-4 lg:pt-40 pt-56 pb-12 flex-grow flex items-center justify-center">
+        <main className="container mx-auto px-4 pt-[260px] sm:pt-56 lg:pt-40 pb-12 flex-grow flex items-center justify-center">
           <div className="glass-panel p-8 md:p-12 max-w-4xl w-full rounded-2xl animate-in fade-in-50 slide-in-from-bottom-4 duration-500">
-            <h1 className="text-3xl md:text-4xl font-bold text-gold-gradient mb-8 font-heading text-center">Política de Privacidade</h1>
+            <h1 className="text-2xl md:text-4xl font-bold text-gold-gradient mb-6 md:mb-8 font-heading text-center">Política de Privacidade</h1>
             
-            <div className="space-y-8 text-muted-foreground leading-relaxed text-[1.05rem]">
+            <div className="space-y-6 md:space-y-8 text-muted-foreground leading-relaxed text-base md:text-[1.05rem]">
               <p>Esta Política de Privacidade descreve como as informações são coletadas, utilizadas e protegidas pelo <strong>Painel do Agronegócio</strong>.</p>
 
               <section>
-                <h2 className="text-xl font-bold text-foreground mb-3 font-heading flex items-center gap-2">
+                <h2 className="text-lg md:text-xl font-bold text-foreground mb-2 md:mb-3 font-heading flex items-center gap-2">
                   <span className="w-1.5 h-6 bg-agro-gold rounded-full inline-block"></span>
                   Coleta de informações
                 </h2>
@@ -38,7 +38,7 @@ const Privacidade = () => {
               </section>
 
               <section>
-                <h2 className="text-xl font-bold text-foreground mb-3 font-heading flex items-center gap-2">
+                <h2 className="text-lg md:text-xl font-bold text-foreground mb-2 md:mb-3 font-heading flex items-center gap-2">
                   <span className="w-1.5 h-6 bg-agro-gold rounded-full inline-block"></span>
                   Uso de cookies
                 </h2>
@@ -46,7 +46,7 @@ const Privacidade = () => {
               </section>
 
               <section>
-                <h2 className="text-xl font-bold text-foreground mb-3 font-heading flex items-center gap-2">
+                <h2 className="text-lg md:text-xl font-bold text-foreground mb-2 md:mb-3 font-heading flex items-center gap-2">
                   <span className="w-1.5 h-6 bg-agro-gold rounded-full inline-block"></span>
                   Publicidade
                 </h2>
@@ -54,7 +54,7 @@ const Privacidade = () => {
               </section>
 
               <section>
-                <h2 className="text-xl font-bold text-foreground mb-3 font-heading flex items-center gap-2">
+                <h2 className="text-lg md:text-xl font-bold text-foreground mb-2 md:mb-3 font-heading flex items-center gap-2">
                   <span className="w-1.5 h-6 bg-agro-gold rounded-full inline-block"></span>
                   Segurança
                 </h2>
@@ -62,7 +62,7 @@ const Privacidade = () => {
               </section>
 
               <section>
-                <h2 className="text-xl font-bold text-foreground mb-3 font-heading flex items-center gap-2">
+                <h2 className="text-lg md:text-xl font-bold text-foreground mb-2 md:mb-3 font-heading flex items-center gap-2">
                   <span className="w-1.5 h-6 bg-agro-gold rounded-full inline-block"></span>
                   Contato
                 </h2>
