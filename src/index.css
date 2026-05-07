@@ -1,0 +1,277 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Agribusiness Dark Theme */
+    --background: 140 30% 5%;
+    --foreground: 60 20% 95%;
+
+    --card: 140 25% 8%;
+    --card-foreground: 60 20% 95%;
+
+    --popover: 140 25% 8%;
+    --popover-foreground: 60 20% 95%;
+
+    --primary: 45 85% 45%;
+    --primary-foreground: 140 30% 5%;
+
+    --secondary: 140 35% 15%;
+    --secondary-foreground: 60 20% 95%;
+
+    --muted: 140 20% 12%;
+    --muted-foreground: 60 10% 60%;
+
+    --accent: 140 50% 25%;
+    --accent-foreground: 60 20% 95%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 60 20% 95%;
+
+    --border: 140 25% 18%;
+    --input: 140 25% 15%;
+    --ring: 45 85% 45%;
+
+    --radius: 0.75rem;
+
+    /* Custom Agro Colors */
+    --agro-green-dark: 140 40% 8%;
+    --agro-green: 140 50% 20%;
+    --agro-green-light: 140 45% 35%;
+    --agro-gold: 45 85% 45%;
+    --agro-gold-light: 45 75% 55%;
+    --agro-earth: 30 35% 25%;
+    --agro-earth-light: 30 30% 35%;
+
+    /* Glassmorphism */
+    --glass-bg: 140 30% 10% / 0.4;
+    --glass-border: 140 30% 25% / 0.2;
+    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.25);
+
+    /* Gradients */
+    --gradient-gold: linear-gradient(135deg, hsl(45 85% 45%), hsl(35 80% 50%));
+    --gradient-green: linear-gradient(135deg, hsl(140 50% 20%), hsl(140 45% 30%));
+    --gradient-dark: linear-gradient(180deg, hsl(140 30% 5%), hsl(140 25% 8%));
+
+    /* Positive/Negative indicators */
+    --positive: 140 60% 45%;
+    --negative: 0 70% 50%;
+
+    --sidebar-background: 140 30% 5%;
+    --sidebar-foreground: 60 20% 95%;
+    --sidebar-primary: 45 85% 45%;
+    --sidebar-primary-foreground: 140 30% 5%;
+    --sidebar-accent: 140 50% 25%;
+    --sidebar-accent-foreground: 60 20% 95%;
+    --sidebar-border: 140 25% 18%;
+    --sidebar-ring: 45 85% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Montserrat', sans-serif;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply backdrop-blur-xl border rounded-xl;
+    background: hsl(var(--glass-bg));
+    border-color: hsl(var(--glass-border));
+    box-shadow: var(--glass-shadow);
+  }
+
+  .glass-card {
+    @apply backdrop-blur-lg border rounded-lg overflow-hidden transition-all duration-300;
+    background: hsl(var(--glass-bg));
+    border-color: hsl(var(--glass-border));
+    box-shadow: var(--glass-shadow);
+  }
+
+  .glass-card:hover {
+    @apply scale-[1.02];
+    box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.45), 0 0 30px hsl(var(--agro-gold) / 0.15);
+    border-color: hsl(var(--agro-gold) / 0.4);
+  }
+
+  /* Carousel thumbnails - no hover effects, no glow */
+  .carousel-thumbnail {
+    @apply backdrop-blur-sm rounded-lg overflow-hidden;
+    box-shadow: none !important;
+  }
+
+  .carousel-thumbnail:hover {
+    transform: none !important;
+    box-shadow: none !important;
+    border-color: inherit !important;
+  }
+
+  .carousel-thumbnail::before {
+    display: none !important;
+  }
+
+  .carousel-thumbnail::after {
+    display: none !important;
+  }
+
+  /* Quote, Weather and News Card Hover Effects */
+  .quote-card,
+  .weather-card,
+  .news-card,
+  .cooxupe-featured-card,
+  .cooxupe-secondary-card {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .quote-card::before,
+  .weather-card::before,
+  .news-card::before,
+  .cooxupe-featured-card::before,
+  .cooxupe-secondary-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+        transparent,
+        hsl(var(--agro-gold) / 0.1),
+        transparent);
+    transition: left 0.5s ease;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .quote-card:hover,
+  .weather-card:hover,
+  .news-card:hover,
+  .cooxupe-featured-card:hover,
+  .cooxupe-secondary-card:hover {
+    transform: translateY(-4px) scale(1.02);
+    border-color: hsl(var(--agro-gold) / 0.5);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3), 0 0 20px hsl(var(--agro-gold) / 0.2);
+  }
+
+  .quote-card:hover::before,
+  .weather-card:hover::before,
+  .news-card:hover::before,
+  .cooxupe-featured-card:hover::before,
+  .cooxupe-secondary-card:hover::before {
+    left: 100%;
+  }
+
+  .text-gold-gradient {
+    background: var(--gradient-gold);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .btn-gold {
+    @apply px-4 py-2 rounded-lg font-semibold transition-all duration-300;
+    background: var(--gradient-gold);
+    color: hsl(var(--background));
+  }
+
+  .btn-gold:hover {
+    @apply scale-105;
+    box-shadow: 0 4px 20px hsl(var(--agro-gold) / 0.4);
+  }
+
+  .quote-positive {
+    color: hsl(var(--positive));
+  }
+
+  .quote-negative {
+    color: hsl(var(--negative));
+  }
+
+  .category-title {
+    @apply text-2xl font-bold tracking-wide;
+    font-family: 'Montserrat', sans-serif;
+    color: hsl(var(--agro-gold));
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+
+  /* Highlighted category (Cooxupé) */
+  .category-highlight {
+    @apply p-6 rounded-2xl backdrop-blur-xl;
+    background: hsl(var(--glass-bg));
+    border: 1px solid hsl(var(--agro-gold) / 0.35);
+    box-shadow: var(--glass-shadow);
+  }
+
+  .category-title-highlight {
+    color: hsl(var(--agro-gold)) !important;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-pulse-slow {
+    animation: pulseSlow 3s ease-in-out infinite;
+  }
+
+  @keyframes pulseSlow {
+
+    0%,
+    100% {
+      opacity: 0.8;
+    }
+
+    50% {
+      opacity: 1;
+    }
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--agro-green));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--agro-green-light));
+}

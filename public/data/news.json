@@ -1,0 +1,342 @@
+{
+  "lastUpdate": "2026-04-18T14:16:40.141Z",
+  "categories": [
+    {
+      "id": "cooxupe",
+      "title": "Cooxupé em Destaque",
+      "news": [
+        {
+          "id": "cooxupe-1776520040332-5perpz",
+          "title": "Cooxupé aposta na arborização do café para gerar renda ao produtor",
+          "summary": "Cooxupé aposta na arborização do café para gerar renda ao produtor",
+          "imageUrl": "https://s02.video.glbimg.com/x720/14534581.jpg",
+          "articleUrl": "https://g1.globo.com/mg/sul-de-minas/videos-jornal-da-eptv-1-edicao/video/cooxupe-aposta-na-arborizacao-do-cafe-para-gerar-renda-ao-produtor-14534581.ghtml",
+          "categoryId": "cooxupe",
+          "subcategory": "cooxupe",
+          "source": "G1",
+          "pubDate": "2026-04-17"
+        },
+        {
+          "id": "cooxupe-1776520050843-yxlh8h",
+          "title": "Cooxupé recebe jovens em programa educativo e apresenta oportunidades no cooperativismo",
+          "summary": "Visita pelo Programa Portas Abertas incluiu palestras, tour virtual e contato com processos do setor cafeeiro",
+          "imageUrl": "http://www.jornaljogoserio.com.br/index/imagens/20483/imagem;jsessionid=41A58F9752A76D9E60DD132984B7A709",
+          "articleUrl": "https://www.jornaljogoserio.com.br/noticia/agricultura_&_pecuaria/20483/cooxupe-recebe-jovens-em-programa-educativo-e-apresenta-oportunidades-no-cooperativismo;jsessionid=5C80F0C61BF9CB7910CF7798B2335E25",
+          "categoryId": "cooxupe",
+          "subcategory": "cooxupe",
+          "source": "Jornal Jogo Sério",
+          "pubDate": "2026-04-17"
+        },
+        {
+          "id": "cooxupe-1776520135769-b7ugd7",
+          "title": "Cooxupé lidera iniciativa inédita no Brasil e viabiliza venda de créditos de carbono no café",
+          "summary": "Projeto de cafeicultura regenerativa conecta cooperados, ciência e mercado internacional e posiciona a Cooxupé como referência em sustentabilidade no café",
+          "imageUrl": "https://cdn.noticiasagricolas.com.br/dbimagens/cafeicultura-regenerativa-z0HMy.jpg",
+          "articleUrl": "https://www.noticiasagricolas.com.br/noticias/cafe/419125-cooxupe-lidera-iniciativa-inedita-no-brasil-e-viabiliza-venda-de-creditos-de-carbono-no-cafe.html",
+          "categoryId": "cooxupe",
+          "subcategory": "cooxupe",
+          "source": "Notícias Agrícolas",
+          "pubDate": "2026-04-16"
+        },
+        {
+          "id": "cooxupe-1776520145593-nfnh03",
+          "title": "Café que captura carbono: cooperativa abre caminho para nova renda no campo",
+          "summary": "Cooxupé (Cooperativa Regional de Cafeicultores em Guaxupé), em Minas Gerais, faz experimento inédito no Brasil, com plantio de árvores entre cafezais e geração de receita do carbono",
+          "imageUrl": "https://news.agrofystatic.com/o_que_e_cafezal-1-scaled-1-1024x684-209887.jpg?d=620x375",
+          "articleUrl": "https://news.agrofy.com.br/noticia/209887/cafe-que-captura-carbono-cooperativa-abre-caminho-nova-renda-no-campo",
+          "categoryId": "cooxupe",
+          "subcategory": "cooxupe",
+          "source": "Agrofy News Brasil",
+          "pubDate": "2026-04-16"
+        }
+      ]
+    },
+    {
+      "id": "inovacao-agro",
+      "title": "Inovação no Agro",
+      "news": [
+        {
+          "id": "inovacao-agro-1776520199241-q9rn1u",
+          "title": "Inovação biotecnológica no agro impulsiona adaptação às mudanças climáticas e ganha protagonismo no campo",
+          "summary": "Bioestimulantes e nanotecnologia aumentam resiliência das lavouras e contribuem para maior eficiência produtiva e sustentabilidade agrícola",
+          "imageUrl": "https://www.portaldoagronegocio.com.br/storage/images/notices/69df6cdc2cebc.jpg",
+          "articleUrl": "https://www.portaldoagronegocio.com.br/tecnologia/biotecnologia/noticias/inovacao-biotecnologica-no-agro-impulsiona-adaptacao-as-mudancas-climaticas-e-ganha-protagonismo-no-campo",
+          "categoryId": "inovacao-agro",
+          "subcategory": "inovacao-agro",
+          "source": "Portal do Agronegócio",
+          "pubDate": "2026-04-17"
+        },
+        {
+          "id": "inovacao-agro-1776520206765-xkxlvg",
+          "title": "Nova fábrica dá pontapé inicial à produção de sementes de cana no Brasil",
+          "summary": "Com mais de R$ 100 milhões na unidade e até R$ 1 bilhão na tecnologia, projeto do CTC muda o plantio após 500 anos",
+          "imageUrl": "https://news.agrofystatic.com/fabrica-sementes-cana-ctc-piracicaba-investimento-sintetica-209892.jpg?d=620x375",
+          "articleUrl": "https://news.agrofy.com.br/noticia/209892/nova-fabrica-da-pontape-inicial-producao-sementes-cana-no-brasil",
+          "categoryId": "inovacao-agro",
+          "subcategory": "inovacao-agro",
+          "source": "Agrofy News Brasil",
+          "pubDate": "2026-04-17"
+        },
+        {
+          "id": "inovacao-agro-1776520250241-r05tck",
+          "title": "Startup nordestina usa inteligência artificial para proteger agricultura das emergências climáticas",
+          "summary": "Solução já aplicada nos portos de Santos e Porto de Açu Uma tecnologia de inteligência climática desenvolvida pela startup brasileira i4sea, já aplicada em operações portuárias no litoral, começa a ser levada pela empresa ao interior do país, para a ",
+          "imageUrl": "https://mahoje.com.br/storage/2026/04/IMG_8983.jpeg",
+          "articleUrl": "https://mahoje.com.br/startup-nordestina-usa-inteligencia-artificial-para-proteger-agricultura-das-emergencias-climaticas/",
+          "categoryId": "inovacao-agro",
+          "subcategory": "inovacao-agro",
+          "source": "Maranhão Hoje",
+          "pubDate": "2026-04-17"
+        },
+        {
+          "id": "inovacao-agro-1776520387073-16m8en",
+          "title": "Sem piloto: trator guiado por tablet começa a rodar no Brasil",
+          "summary": "Tecnologia da PTx apresentada na Alemanha ganha movimento no país e leva controle remoto e mais eficiência ao campo",
+          "imageUrl": "https://news.agrofystatic.com/trator-sem-piloto-ptx-tablet-controle-remoto-brasil-209894.jpeg?d=620x375",
+          "articleUrl": "https://news.agrofy.com.br/noticia/209894/sem-piloto-trator-guiado-tablet-comeca-rodar-no-brasil",
+          "categoryId": "inovacao-agro",
+          "subcategory": "inovacao-agro",
+          "source": "Agrofy News Brasil",
+          "pubDate": "2026-04-17"
+        }
+      ]
+    },
+    {
+      "id": "defensivos",
+      "title": "Defensivos",
+      "news": [
+        {
+          "id": "defensivos-1776520461735-buxvj2",
+          "title": "Bioinsumos ampliam funções no sistema produtivo",
+          "summary": "O uso de bioinsumos tem avançado como uma das principais estratégias para tornar os sistemas agrícolas mais eficientes e sustentáveis. Nesse contexto, ganha destaque a atuação de soluções que integram diferentes funções dentro do manejo produtivo, co",
+          "imageUrl": "https://www.agrolink.com.br/upload/imagens-resizes/aad3bd90f595415da16455f50d0e07f8_858x483.jpg",
+          "articleUrl": "https://www.agrolink.com.br/noticias/bioinsumos-ampliam-funcoes-no-sistema-produtivo_513257.html",
+          "categoryId": "defensivos",
+          "subcategory": "defensivos",
+          "source": "Agrolink",
+          "pubDate": "2026-04-17"
+        },
+        {
+          "id": "defensivos-1776520470380-u9o80l",
+          "title": "Mercado de bioinsumos alcança R$ 6,2 bilhões em 2025",
+          "summary": "O setor de bioinsumos no Brasil cresce 28% e atinge R$ 6,2 bilhões em vendas, impulsionado pela busca por alternativas sustentáveis.",
+          "imageUrl": "https://imagens-cdn.canalrural.com.br/2026/04/youtube-thumb-l5aggyNLm_c-1200x675.jpg",
+          "articleUrl": "https://www.canalrural.com.br/videos/mercado-de-bioinsumos-alcanca-r-62-bilhoes-em-2025/",
+          "categoryId": "defensivos",
+          "subcategory": "defensivos",
+          "source": "Canal Rural",
+          "pubDate": "2026-04-17"
+        },
+        {
+          "id": "defensivos-1776520763259-hzblp4",
+          "title": "Fungos surgem como alternativa a inseticidas",
+          "summary": "O controle de pragas na agricultura passa por uma transformação impulsionada pela busca por soluções mais sustentáveis e eficazes. As informações são de Marcus Lourenço “Polé”, biólogo, que destaca o avanço do uso de microrganismos no manejo agrícola",
+          "imageUrl": "https://www.agrolink.com.br/upload/imagens-resizes/9f872fd3352b4dd280018d7fa25c5d9e_858x483.jpg",
+          "articleUrl": "https://www.agrolink.com.br/culturas/hortifruti/noticia/fungos-surgem-como-alternativa-a-inseticidas_513256.html",
+          "categoryId": "defensivos",
+          "subcategory": "defensivos",
+          "source": "Agrolink",
+          "pubDate": "2026-04-17"
+        }
+      ]
+    },
+    {
+      "id": "fertilizantes",
+      "title": "Fertilizantes",
+      "news": [
+        {
+          "id": "fertilizantes-1776521011629-v1xg2z",
+          "title": "ITPS orienta produtores sobre análise de fertilizantes para melhorar qualidade do solo",
+          "summary": "ITPS orienta produtores sobre análise de fertilizantes para melhorar qualidade do solo",
+          "imageUrl": "https://xodonews.com.br/img/imagem/whatsapp-image-2026-04-17-at-15-28-59_4bb9928a10d3b5797b49a9d5.jpeg",
+          "articleUrl": "https://xodonews.com.br/noticia/90174/itps-orienta-produtores-sobre-analise-de-fertilizantes-para-melhorar-qualidade-do-solo",
+          "categoryId": "fertilizantes",
+          "subcategory": "fertilizantes",
+          "source": "Xodó News",
+          "pubDate": "2026-04-17"
+        },
+        {
+          "id": "fertilizantes-1776521072431-g8ctmk",
+          "title": "Governo lança R$ 15 bilhões em crédito para reduzir dependência de fertilizantes importados - aRede",
+          "summary": "Programa Brasil Soberano 2 prioriza indústria química e de máquinas agrícolas com taxas reduzidas; meta é fortalecer a produção nacional frente às crises globais.",
+          "imageUrl": "https://cdn.arede.info/img/cover/630000/governo-lanca-r-15-bilhoes-em-credito-para-reduzir006367540202604171819.jpg?xid=2338534",
+          "articleUrl": "https://arede.info/a-forca-do-agro/636754/governo-lanca-r-15-bilhoes-em-credito-para-reduzir-dependencia-de-fertilizantes-importados",
+          "categoryId": "fertilizantes",
+          "subcategory": "fertilizantes",
+          "source": "aRede",
+          "pubDate": "2026-04-18"
+        },
+        {
+          "id": "fertilizantes-1776521116168-zd3czw",
+          "title": "Fábrica em PG assume papel estratégico diante de crise global de fertilizantes - aRede",
+          "summary": "Unidade paranaense da Yara é um dos três centros fabris no Brasil que garantirá formulações complexas para a safra 2026/27, enquanto guerras ameaçam 33,8 milhões de toneladas de insumos no mundo.",
+          "imageUrl": "https://cdn.arede.info/img/cover/630000/fabrica-em-ponta-grossa-assume-papel-estrategico-d006367430202604171730.jpg?xid=2338472",
+          "articleUrl": "https://arede.info/a-forca-do-agro/636743/fabrica-em-pg-assume-papel-estrategico-diante-de-crise-global-de-fertilizantes",
+          "categoryId": "fertilizantes",
+          "subcategory": "fertilizantes",
+          "source": "aRede",
+          "pubDate": "2026-04-17"
+        }
+      ]
+    },
+    {
+      "id": "maquinas-irrigacao",
+      "title": "Máquinas/Irrigação",
+      "news": [
+        {
+          "id": "maquinas-irrigacao-1776521402622-9cnno1",
+          "title": "Baldan entra no mercado sucroenergético com pulverizador para a cana",
+          "summary": "Empresa de Matão (SP) lançará equipamento na Agrishow, feira que será realizada em Ribeirão Preto (SP), entre 27 de abril e 1º de maio",
+          "imageUrl": "https://s2-globorural.glbimg.com/xn-bgrnEqPuyniUDJoNjFhlcrY4=/1200x/smart/filters:cover():strip_icc()/i.s3.glbimg.com/v1/AUTH_afe5c125c3bb42f0b5ae633b58923923/internal_photos/bs/2026/T/q/3jJ2V2R7mddOgARA8K4w/avola.jpg",
+          "articleUrl": "https://globorural.globo.com/maquinas-agricolas/noticia/2026/04/baldan-entra-no-mercado-sucroenergetico-com-pulverizador-para-a-cana.ghtml",
+          "categoryId": "maquinas-irrigacao",
+          "subcategory": "maquinas",
+          "source": "Globo Rural",
+          "pubDate": "2026-04-16"
+        },
+        {
+          "id": "maquinas-irrigacao-1776521474609-sttadu",
+          "title": "Massey aposta em trator de alta potência para ampliar vendas a grandes produtores rurais",
+          "summary": "Nova linha de máquinas agrícolas será lançada pela Massey Ferguson durante a Agrishow 2026, em Ribeirão Preto (SP)",
+          "imageUrl": "https://imagens-cdn.canalrural.com.br/2026/04/MF-9S-e-plantadeira-Momentum-3-1200x675.jpg",
+          "articleUrl": "https://www.canalrural.com.br/agricultura/massey-aposta-em-trator-de-alta-potencia-para-ampliar-vendas-a-grandes-produtores-rurais/",
+          "categoryId": "maquinas-irrigacao",
+          "subcategory": "maquinas",
+          "source": "Canal Rural",
+          "pubDate": "2026-04-16"
+        },
+        {
+          "id": "maquinas-irrigacao-1776521513299-uzzxpi",
+          "title": "Banana sob pivô central atinge 32 t/ha no Oeste baiano e supera médias estadual e nacional",
+          "summary": "Irrigação de precisão impulsiona produtividade da bananicultura na Bahia e reforça avanço tecnológico no Oeste do estado",
+          "imageUrl": "https://www.portaldoagronegocio.com.br/storage/images/notices/69df65cd1f566.jpg",
+          "articleUrl": "https://www.portaldoagronegocio.com.br/agricultura/fruticultura/noticias/banana-sob-pivo-central-atinge-32-t-ha-no-oeste-baiano-e-supera-medias-estadual-e-nacional",
+          "categoryId": "maquinas-irrigacao",
+          "subcategory": "irrigacao",
+          "source": "Portal do Agronegócio",
+          "pubDate": "2026-04-16"
+        }
+      ]
+    },
+    {
+      "id": "graos",
+      "title": "Grãos (Café, Milho e Soja)",
+      "news": [
+        {
+          "id": "graos-1776521583862-c7xjyf",
+          "title": "“Vivenciando a Prática: Café” conecta alunos do meio rural à cadeia de exportação em Varginha (MG)",
+          "summary": "Alunos da zona rural de Varginha (MG) visitam unidade da NKG Stockler e conhecem etapas da exportação, práticas sustentáveis, carreiras e degustação de café, ampliando o conhecimento sobre a cadeia produtiva cafeeira",
+          "imageUrl": "https://www.agrolink.com.br/upload/imagens-resizes/10983eb66ddb476887a445f4bab87124_858x483.jpg",
+          "articleUrl": "https://www.agrolink.com.br/noticias/-vivenciando-a-pratica--cafe--conecta-alunos-do-meio-rural-a-cadeia-de-exportacao-em-varginha--mg-_513244.html",
+          "categoryId": "graos",
+          "subcategory": "cafe",
+          "source": "Agrolink",
+          "pubDate": "2026-04-17"
+        },
+        {
+          "id": "graos-1776521639713-5am87a",
+          "title": "IMEA em Campo aponta produção recorde de soja em MT e alerta para impacto do clima no milho 2ª safra",
+          "summary": "A análise da produção e as perspectivas para o campo em Mato Grosso foram apresentadas durante a palestra “IMEA em Campo”, ministrada pelo analista de campo...",
+          "imageUrl": "https://cdn.noticiasagricolas.com.br/dbimagens/imea-parecis-superagro-vY2wV.jpg",
+          "articleUrl": "https://www.noticiasagricolas.com.br/noticias/graos/419266-imea-em-campo-aponta-producao-recorde-de-soja-em-mt-e-alerta-para-impacto-do-clima-no-milho-2-safra.html",
+          "categoryId": "graos",
+          "subcategory": "milho",
+          "source": "Notícias Agrícolas",
+          "pubDate": "2026-04-17"
+        },
+        {
+          "id": "graos-1776521658030-fx00cu",
+          "title": "Volatilidade marca mercado de soja e mantém ritmo moderado de negócios no Brasil",
+          "summary": "O mercado brasileiro de soja encerrou a semana com um ritmo moderado de negócios, em meio a oscilações ao longo do dia. Segundo o analista da Safras & Mercado, Rafael Silveira, a sessão foi marcada por dois momentos distintos, refletindo a instab...",
+          "imageUrl": "https://www.olharalerta.com.br/imgsite/noticias/amp-soja-mais-um(84).jpg",
+          "articleUrl": "https://www.olharalerta.com.br/noticia/91243/volatilidade-marca-mercado-de-soja-e-mantem-ritmo-moderado-de-negocios-no-brasil",
+          "categoryId": "graos",
+          "subcategory": "soja",
+          "source": "Olhar Alerta",
+          "pubDate": "2026-04-18"
+        }
+      ]
+    },
+    {
+      "id": "gado-corte",
+      "title": "Gado de Corte",
+      "news": [
+        {
+          "id": "gado-corte-1776521683369-anprpv",
+          "title": "Arroba do boi gordo: confira como o mercado pecuário fechou a semana",
+          "summary": "O mercado físico do boi gordo apresenta queda de suas cotações no decorrer desta sexta-feira (17), com os frigoríficos começando a sinalizar para avanços em suas escalas de abate.O analista da consultoria Safras & Mercado Fernando Henrique Ig...",
+          "imageUrl": "https://www.olharalerta.com.br/imgsite/noticias/amp-gado-boiada(77).jpg",
+          "articleUrl": "https://www.olharalerta.com.br/noticia/91242/arroba-do-boi-gordo-confira-como-o-mercado-pecuario-fechou-a-semana",
+          "categoryId": "gado-corte",
+          "subcategory": "gado-corte",
+          "source": "Olhar Alerta",
+          "pubDate": "2026-04-18"
+        },
+        {
+          "id": "gado-corte-1776521708054-a6j62i",
+          "title": "Boi gordo tem escalas mais confortáveis e demanda mais cautelosa",
+          "summary": "Frigoríficos alongam programações de abate, parte das unidades sai das compras e mercado acompanha cenário externo, com atenção à China",
+          "imageUrl": "https://news.agrofystatic.com/boi-gordo-escalas-frigorificos-demanda-209895.jpg?d=620x375",
+          "articleUrl": "https://news.agrofy.com.br/noticia/209895/boi-gordo-tem-escalas-mais-confortaveis-e-demanda-mais-cautelosa",
+          "categoryId": "gado-corte",
+          "subcategory": "gado-corte",
+          "source": "Agrofy News Brasil",
+          "pubDate": "2026-04-17"
+        },
+        {
+          "id": "gado-corte-1776521727199-1n62fd",
+          "title": "Fim das cotas de exportação e casos de aftosa na China são fatores de incertezas para preços da arroba",
+          "summary": "Fator China deve estar no radar dos pecuaristas porque pode influenciar diretamente nos preços da arroba , tanto para cima quanto para baixo",
+          "imageUrl": "https://cdn.noticiasagricolas.com.br/dbimagens/lygia-Pcg19.jpg",
+          "articleUrl": "https://www.noticiasagricolas.com.br/videos/boi/419258-fim-das-cotas-de-exportacao-e-casos-de-aftosa-na-china-sao-fatores-de-incertezas-para-precos-da-arroba.html",
+          "categoryId": "gado-corte",
+          "subcategory": "gado-corte",
+          "source": "Notícias Agrícolas",
+          "pubDate": "2026-04-17"
+        }
+      ]
+    },
+    {
+      "id": "leite",
+      "title": "Leite",
+      "news": [
+        {
+          "id": "leite-1776521780406-3r928g",
+          "title": "Leite spot: confira valores da segunda quinzena de abril",
+          "summary": "O mercado de leite spot registrou queda de preços em todos os estados na segunda quinzena de abril, revertendo parte do movimento de alta observado no período anterior e sinalizando um ambiente mais cauteloso nas negociações entre indústrias. Na médi",
+          "imageUrl": "https://www.milkpoint.com.br/img/artigo/122111/?w=1200&h=630&cf=1&vs=17042026161838",
+          "articleUrl": "https://www.milkpoint.com.br/noticias-e-mercado/panorama-mercado/leite-spot-confira-valores-da-segunda-quinzena-de-abril-240727/",
+          "categoryId": "leite",
+          "subcategory": "leite",
+          "source": "MilkPoint",
+          "pubDate": "2026-04-17"
+        },
+        {
+          "id": "leite-1776521789880-1gfin7",
+          "title": "Alento para os pecuaristas: mesmo tímida, leite teve recuperação",
+          "summary": "Surgiu uma luz no cenário da pecuária de leite, com uma recuperação tímida no preço do produto, o que trouxe um alívio moderado para os produtores após um período de forte pressão no setor.Mas apesar dessa leve reação, o cenário ainda é considerado d",
+          "imageUrl": "https://www.radiosantacruzfmg.com.br/publica/imgs/radio-santa-cruz-sociais.jpg",
+          "articleUrl": "https://www.radiosantacruzfmg.com.br/parademinas/noticia/90083/0/alento-para-os-pecuaristas-mesmo-timida-leite-teve-recuperacao-",
+          "categoryId": "leite",
+          "subcategory": "leite",
+          "source": "Rádio Santa Cruz",
+          "pubDate": "2026-04-18"
+        },
+        {
+          "id": "leite-1776521800132-596nx9",
+          "title": "De guerra à entressafra: o que explica a maior alta mensal da cesta básica em Campinas",
+          "summary": "Tomate, leite e feijão registraram as maiores altas em março na pesquisa que aponta o custo da cesta básica em Campinas (SP), elaborada pelo Observatório PUC-Campinas Reprodução/EPTV Dos impactos da...",
+          "imageUrl": "https://back.ww-cdn.com/resizeapi/41266c66b1c3b7653f134fc3e7cd0a117417bf2ec845a0c6f440727dc68e0365/750/-1/",
+          "articleUrl": "https://www.irecelider.com.br/noticias-do-mundo/i/ff287cea7e50ad5756fda9d939bf78a9/de-guerra-entressafra-o-que-explica-maior-alta-mensal-da-cesta-basica-em-campinas",
+          "categoryId": "leite",
+          "subcategory": "leite",
+          "source": "Grupo Jota Sidney",
+          "pubDate": "2026-04-18"
+        }
+      ]
+    }
+  ],
+  "sources": {
+    "Google News": "https://news.google.com/"
+  }
+}

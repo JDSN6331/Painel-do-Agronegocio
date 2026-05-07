@@ -1,0 +1,40 @@
+{
+  "lastUpdate": "2026-05-07T11:19:19.427Z",
+  "quotes": [
+    {
+      "name": "Dólar",
+      "value": "R$ 4,93",
+      "change": 0.06
+    },
+    {
+      "name": "Café ICE NY",
+      "value": "R$ 1.948,87",
+      "change": -2.14
+    },
+    {
+      "name": "Café CEPEA/ESALQ",
+      "value": "R$ 1.744,04",
+      "change": -0.83
+    },
+    {
+      "name": "Milho",
+      "value": "R$ 66,41",
+      "change": -0.48
+    },
+    {
+      "name": "Soja",
+      "value": "R$ 128,62",
+      "change": -0.22
+    },
+    {
+      "name": "Boi Gordo",
+      "value": "R$ 354,05",
+      "change": 0.07
+    },
+    {
+      "name": "Leite",
+      "value": "R$ 2,46",
+      "change": 11.58
+    }
+  ]
+}

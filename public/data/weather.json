@@ -1,0 +1,45 @@
+{
+  "lastUpdate": "2026-05-07T11:19:26.009Z",
+  "weather": [
+    {
+      "city": "São Paulo",
+      "state": "SP",
+      "temperature": 21,
+      "humidity": 61,
+      "rainProbability": 0,
+      "weatherCode": 0,
+      "condition": "Céu limpo",
+      "conditionIcon": "sun"
+    },
+    {
+      "city": "Guaxupé",
+      "state": "MG",
+      "temperature": 20,
+      "humidity": 75,
+      "rainProbability": 0,
+      "weatherCode": 0,
+      "condition": "Céu limpo",
+      "conditionIcon": "sun"
+    },
+    {
+      "city": "São José do Rio Pardo",
+      "state": "SP",
+      "temperature": 22,
+      "humidity": 68,
+      "rainProbability": 0,
+      "weatherCode": 0,
+      "condition": "Céu limpo",
+      "conditionIcon": "sun"
+    },
+    {
+      "city": "Patrocínio",
+      "state": "MG",
+      "temperature": 20,
+      "humidity": 72,
+      "rainProbability": 35,
+      "weatherCode": 0,
+      "condition": "Céu limpo",
+      "conditionIcon": "sun"
+    }
+  ]
+}

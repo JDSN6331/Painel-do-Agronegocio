@@ -1,0 +1,62 @@
+🚀 Gerenciamento da Aplicação (PM2)
+O PM2 é o "motor" que mantém o seu backend rodando.
+
+Ver status dos processos: pm2 status.
+
+Ver logs em tempo real: pm2 logs field-focus-backend.
+
+Reiniciar o backend: pm2 restart field-focus-backend.
+
+Parar o backend: pm2 stop field-focus-backend.
+
+Limpar histórico de logs: pm2 flush (comando útil para remover mensagens de erro antigas).
+
+Salvar lista de processos para o boot: pm2 save.
+
+🌐 Servidor Web (Nginx)
+Comandos para controlar como o seu site é servido na internet.
+
+Verificar status: sudo systemctl status nginx.
+
+Recarregar configurações: sudo systemctl reload nginx.
+
+Testar sintaxe do arquivo de configuração: sudo nginx -t.
+
+Reiniciar serviço: sudo systemctl restart nginx.
+
+📂 Atualização e Arquivos
+Para quando você fizer mudanças no GitHub e precisar trazer para a AWS.
+
+Puxar código novo: git pull origin main.
+
+Descartar alterações locais nos JSONs: git checkout -- public/data/*.json.
+
+Gerar novo build do frontend: npm run build.
+
+Listar arquivos de dados gerados: ls -lh /var/www/field-focus-board/public/data/.
+
+📊 Verificação de Memória e Sistema
+Como o Puppeteer exige no mínimo 2GB de RAM, monitorar a memória é crucial para evitar que o Chromium trave a instância.
+
+Ver uso de memória em tempo real: free -h
+
+O que observar: O valor em "Available" indica quanto ainda há de sobra.
+
+Monitor de recursos (Processos/CPU/RAM): top ou htop (se instalado).
+
+Dica: Pressione q para sair desses monitores.
+
+Verificar uso de disco: df -h
+
+Importante: O Chromium e os node_modules podem ocupar bastante espaço ao longo do tempo.
+
+Verificar logs do sistema (se a instância travar): sudo dmesg | grep -i "out of memory"
+
+Utilidade: Identifica se o sistema operacional "matou" o Puppeteer por falta de RAM.
+
+🛠️ Troubleshooting Puppeteer
+Comando rápido para validar se o ambiente gráfico necessário para o scraping está íntegro:
+
+Bash
+
+node -e "const puppeteer = require('puppeteer'); puppeteer.launch().then(b => { console.lo
