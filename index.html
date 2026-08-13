@@ -50,7 +50,118 @@
 </head>
 
 <body>
-  <div id="root"></div>
+  <div id="root">
+    <div class="min-h-screen flex flex-col">
+      <header class="fixed top-0 left-0 right-0 z-50 glass-panel rounded-none border-x-0 border-t-0">
+        <div class="container mx-auto px-4 py-4">
+          <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+            <div class="flex items-center gap-4">
+              <img src="/Logo.png" alt="Logo Painel do Agronegócio" class="w-16 h-16 md:w-20 md:h-20 object-contain" />
+              <div class="flex flex-col items-center lg:items-start text-center lg:text-left gap-1">
+                <h1 class="text-2xl md:text-3xl font-bold font-heading text-gold-gradient">
+                  <a href="/">Painel do Agronegócio</a>
+                </h1>
+                <p class="text-sm text-muted-foreground max-w-[320px] md:max-w-[400px]">
+                  Plataforma com dados atualizados do agronegócio brasileiro: cotações, clima e notícias em tempo real.
+                </p>
+              </div>
+            </div>
+            <nav class="flex flex-wrap xl:flex-nowrap items-center justify-center lg:justify-end gap-1 sm:gap-1.5 md:gap-2 text-xs md:text-sm text-muted-foreground py-1">
+              <a href="/" class="px-2 py-1 rounded-md transition-colors hover:text-agro-gold">Início</a>
+              <a href="/artigos" class="px-2 py-1 rounded-md transition-colors hover:text-agro-gold">Artigos</a>
+              <a href="/calculadoras" class="px-2 py-1 rounded-md transition-colors hover:text-agro-gold">Calculadoras</a>
+              <a href="/sobre" class="px-2 py-1 rounded-md transition-colors hover:text-agro-gold">Sobre</a>
+              <a href="/contato" class="px-2 py-1 rounded-md transition-colors hover:text-agro-gold">Contato</a>
+              <a href="/privacidade" class="px-2 py-1 rounded-md transition-colors hover:text-agro-gold">Privacidade</a>
+              <a href="/termos" class="px-2 py-1 rounded-md transition-colors hover:text-agro-gold">Termos</a>
+            </nav>
+          </div>
+        </div>
+      </header>
+      <main class="container mx-auto px-4 pt-40 pb-12 flex-grow">
+        <section class="mb-8">
+          <h2 class="text-xl md:text-2xl font-bold font-heading text-gold-gradient mb-2">Plataforma de Inteligência do Agronegócio Brasileiro</h2>
+          <p class="text-sm text-muted-foreground">Cotações em tempo real de soja, milho, boi gordo, café e mais commodities. Meteorologia agrícola e calculadoras operacionais para a tomada de decisão no campo.</p>
+        </section>
+        <section class="mb-12">
+          <div class="flex items-center justify-between mb-6">
+            <h2 class="text-xl md:text-2xl font-bold font-heading text-gold-gradient">Artigos & Análises do Agronegócio (18 Artigos Autorais)</h2>
+            <a href="/artigos" class="btn-gold text-xs px-4 py-2">Ver todos os artigos →</a>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <article class="glass-card rounded-xl p-4 flex flex-col justify-between">
+              <span class="text-[11px] text-agro-gold font-medium mb-1">Grãos & Oleaginosas</span>
+              <h3 class="text-base font-bold font-heading text-foreground mb-2">
+                <a href="/artigos/como-gestao-custos-impacta-rentabilidade-safra-soja" class="hover:underline">Como a Gestão Eficiente de Custos Impacta a Rentabilidade na Safra de Soja</a>
+              </h3>
+              <p class="text-xs text-muted-foreground mb-4">Com as oscilações das commodities e custos de insumos elevados, o controle rigoroso das despesas por hectare tornou-se o principal diferencial para a margem de lucro do produtor rural.</p>
+              <a href="/artigos/como-gestao-custos-impacta-rentabilidade-safra-soja" class="text-xs font-semibold text-agro-gold hover:underline">Ler artigo completo →</a>
+            </article>
+            <article class="glass-card rounded-xl p-4 flex flex-col justify-between">
+              <span class="text-[11px] text-agro-gold font-medium mb-1">Máquinas & Irrigação</span>
+              <h3 class="text-base font-bold font-heading text-foreground mb-2">
+                <a href="/artigos/tecnologias-manejo-irrigacao-economia-agua-energia" class="hover:underline">Tecnologias no Manejo de Irrigação: Como Economizar Água e Energia</a>
+              </h3>
+              <p class="text-xs text-muted-foreground mb-4">A utilização de pivôs centrais inteligentes e sensores de umidade no solo revoluciona a eficiência hídrica no campo, reduzindo custos energéticos e aumentando a produtividade.</p>
+              <a href="/artigos/tecnologias-manejo-irrigacao-economia-agua-energia" class="text-xs font-semibold text-agro-gold hover:underline">Ler artigo completo →</a>
+            </article>
+            <article class="glass-card rounded-xl p-4 flex flex-col justify-between">
+              <span class="text-[11px] text-agro-gold font-medium mb-1">Defensivos & Proteção</span>
+              <h3 class="text-base font-bold font-heading text-foreground mb-2">
+                <a href="/artigos/manejo-integrado-pragas-mip-reducao-defensivos" class="hover:underline">Manejo Integrado de Pragas (MIP): Sustentabilidade e Redução de Insumos</a>
+              </h3>
+              <p class="text-xs text-muted-foreground mb-4">O monitoramento constante da lavoura e a integração de controle biológico com defensivos químicos trazem economia real e preservação ambiental para a agricultura.</p>
+              <a href="/artigos/manejo-integrado-pragas-mip-reducao-defensivos" class="text-xs font-semibold text-agro-gold hover:underline">Ler artigo completo →</a>
+            </article>
+          </div>
+        </section>
+        <section class="mb-12">
+          <div class="glass-card rounded-2xl p-6 border border-agro-gold/30 bg-gradient-to-r from-background/90 via-agro-gold/5 to-background/90">
+            <h2 class="text-xl font-bold text-gold-gradient mb-2">Guia Agronômico AgroBase</h2>
+            <p class="text-sm text-muted-foreground mb-4">Acesse um guia completo de insumos, manejo e recomendações técnicas para apoiar o planejamento e as melhores decisões no campo.</p>
+            <a href="https://crc-comercial-insumos-guia-agronomico.br1rfu.easypanel.host/" target="_blank" rel="noopener noreferrer" class="btn-gold px-5 py-2.5 text-xs font-semibold rounded-xl inline-block">Acessar Guia Agronômico AgroBase ↗</a>
+          </div>
+        </section>
+      </main>
+      <footer class="glass-panel rounded-none border-x-0 border-b-0 py-8 mt-auto">
+        <div class="container mx-auto px-4">
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8 text-center md:text-left">
+            <div class="space-y-3">
+              <h3 class="text-base font-bold font-heading text-agro-gold">Painel do Agronegócio</h3>
+              <p class="text-xs text-muted-foreground leading-relaxed">Plataforma de inteligência e informação para o agronegócio brasileiro: cotações em tempo real, meteorologia, ferramentas agrícolas e artigos orientativos.</p>
+            </div>
+            <div>
+              <h4 class="text-xs font-semibold text-foreground uppercase tracking-wider mb-3">Navegação</h4>
+              <ul class="space-y-2 text-xs text-muted-foreground">
+                <li><a href="/" class="hover:text-agro-gold">Início</a></li>
+                <li><a href="/artigos" class="hover:text-agro-gold">Artigos & Análises</a></li>
+                <li><a href="/calculadoras" class="hover:text-agro-gold">Calculadoras Agrícolas</a></li>
+                <li><a href="https://crc-comercial-insumos-guia-agronomico.br1rfu.easypanel.host/" target="_blank" rel="noopener noreferrer" class="hover:text-agro-gold text-agro-gold font-medium">Guia Agronômico AgroBase ↗</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="text-xs font-semibold text-foreground uppercase tracking-wider mb-3">Institucional</h4>
+              <ul class="space-y-2 text-xs text-muted-foreground">
+                <li><a href="/sobre" class="hover:text-agro-gold">Sobre Nós</a></li>
+                <li><a href="/contato" class="hover:text-agro-gold">Contato</a></li>
+                <li><a href="/privacidade" class="hover:text-agro-gold">Política de Privacidade</a></li>
+                <li><a href="/termos" class="hover:text-agro-gold">Termos de Uso</a></li>
+              </ul>
+            </div>
+            <div class="space-y-3">
+              <h4 class="text-xs font-semibold text-foreground uppercase tracking-wider">Transparência</h4>
+              <p class="text-[11px] text-muted-foreground leading-relaxed">As cotações e dados meteorológicos são obtidos de fontes públicas e APIs abertas.</p>
+            </div>
+          </div>
+          <hr class="border-muted-foreground/20 my-6" />
+          <div class="flex flex-col sm:flex-row items-center justify-between text-xs text-muted-foreground gap-3">
+            <p>© 2026 Painel do Agronegócio. Todos os direitos reservados.</p>
+            <p>Redação • Painel do Agronegócio</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
   <script type="module" src="/src/main.tsx"></script>
 </body>
 
