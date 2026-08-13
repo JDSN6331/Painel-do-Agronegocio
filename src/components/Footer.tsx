@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { BookOpen, Shield, FileText, Mail, Info, Calculator, Home } from "lucide-react";
+import { BookOpen, Shield, FileText, Mail, Info, Calculator, Home, ExternalLink } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -40,6 +40,18 @@ const Footer = () => {
                   <Calculator className="w-3.5 h-3.5" />
                   Calculadoras Agrícolas
                 </Link>
+              </li>
+              <li>
+                <a
+                  href="https://crc-comercial-insumos-guia-agronomico.br1rfu.easypanel.host/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-agro-gold text-agro-gold transition-colors inline-flex items-center gap-1.5 font-medium"
+                >
+                  <BookOpen className="w-3.5 h-3.5" />
+                  Guia Agronômico AgroBase
+                  <ExternalLink className="w-3 h-3 opacity-70" />
+                </a>
               </li>
             </ul>
           </div>
