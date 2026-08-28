@@ -1,42 +1,42 @@
 {
-  "lastUpdate": "2026-07-29T14:23:52.667Z",
+  "lastUpdate": "2026-08-28T18:20:09.830Z",
   "weather": [
     {
       "city": "São Paulo",
       "state": "SP",
-      "temperature": 28,
-      "humidity": 32,
-      "rainProbability": 71,
-      "weatherCode": 1,
-      "condition": "Principalmente limpo",
-      "conditionIcon": "sun"
+      "temperature": 31,
+      "humidity": 31,
+      "rainProbability": 0,
+      "weatherCode": 3,
+      "condition": "Nublado",
+      "conditionIcon": "cloud"
     },
     {
       "city": "Guaxupé",
       "state": "MG",
-      "temperature": 29,
-      "humidity": 27,
-      "rainProbability": 2,
-      "weatherCode": 0,
-      "condition": "Céu limpo",
-      "conditionIcon": "sun"
+      "temperature": 30,
+      "humidity": 35,
+      "rainProbability": 34,
+      "weatherCode": 2,
+      "condition": "Parcialmente nublado",
+      "conditionIcon": "cloud-sun"
     },
     {
       "city": "São José do Rio Pardo",
       "state": "SP",
-      "temperature": 27,
-      "humidity": 49,
-      "rainProbability": 10,
-      "weatherCode": 0,
-      "condition": "Céu limpo",
-      "conditionIcon": "sun"
+      "temperature": 30,
+      "humidity": 41,
+      "rainProbability": 9,
+      "weatherCode": 51,
+      "condition": "Garoa leve",
+      "conditionIcon": "cloud-drizzle"
     },
     {
       "city": "Patrocínio",
       "state": "MG",
-      "temperature": 27,
-      "humidity": 34,
-      "rainProbability": 0,
+      "temperature": 28,
+      "humidity": 44,
+      "rainProbability": 29,
       "weatherCode": 0,
       "condition": "Céu limpo",
       "conditionIcon": "sun"

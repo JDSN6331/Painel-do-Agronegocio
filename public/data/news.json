@@ -1,31 +1,31 @@
 {
-  "lastUpdate": "2026-07-29T13:39:20.145Z",
+  "lastUpdate": "2026-08-28T18:14:35.380Z",
   "categories": [
     {
       "id": "cooxupe",
       "title": "Cooxupé em Destaque",
       "news": [
         {
-          "id": "cooxupe-1785330381416-o3narp",
-          "title": "Colheita de café de cooperados da Cooxupé atinge 58,3% Por Reuters - Investing.com Brasil",
-          "summary": "Colheita de caf&eacute; de cooperados da Cooxup&eacute; atinge 58,3%",
-          "imageUrl": "https://i-invdn-com.investing.com/news/LYNXMPEB380UC_L.jpg",
-          "articleUrl": "https://br.investing.com/news/commodities-news/colheita-de-cafe-de-cooperados-da-cooxupe-atinge-583-2017838",
+          "id": "cooxupe-1787938182897-19dequ",
+          "title": "Cooperados da Cooxupé chegam a 87,5% da colheita de café",
+          "summary": "Levantamento acompanha o andamento da safra no Sul de Minas, Cerrado Mineiro, Matas de Minas e São Paulo",
+          "imageUrl": "https://cdn.noticiasagricolas.com.br/dbimagens/graos-cafe-5-0XqrN.jpg",
+          "articleUrl": "https://www.noticiasagricolas.com.br/noticias/cafe/427008-cooperados-da-cooxupe-chegam-a-87-5-da-colheita-de-cafe.html",
           "categoryId": "cooxupe",
           "subcategory": "cooxupe",
-          "source": "Investing.com Brasil - Finanças, Câmbio e Investimentos",
-          "pubDate": "2026-07-29"
+          "source": "Notícias Agrícolas",
+          "pubDate": "2026-08-26"
         },
         {
-          "id": "cooxupe-1785330444138-2u69mh",
-          "title": "Cooxupé promove Fórum Café e Clima para avaliar impactos do El Niño e perspectivas da safra de café 2026/27",
-          "summary": "Evento reúne especialistas em meteorologia, fisiologia vegetal e geoprocessamento para orientar produtores sobre clima, produtividade e estratégias para preservar o potencial dos cafezais",
-          "imageUrl": "https://www.portaldoagronegocio.com.br/storage/images/notices/6a68bb6ab42f0.jpg",
-          "articleUrl": "https://www.portaldoagronegocio.com.br/agricultura/cafe/noticias/cooxupe-promove-forum-cafe-e-clima-para-avaliar-impactos-do-el-nino-e-perspectivas-da-safra-de-cafe-2026-27",
+          "id": "cooxupe-1787939187713-oqdkf6",
+          "title": "Cooxupé conquista na Justiça devolução de mais de R$ 622 milhões",
+          "summary": "Cooperativa garante devolução de valores e beneficia 22 mil famílias cafeicultoras após decisão judicial sobre o FUN Rural",
+          "imageUrl": "https://imagens-cdn.canalrural.com.br/2026/08/youtube-thumb-KBesrr_dVjE-1200x675.jpg",
+          "articleUrl": "https://www.canalrural.com.br/videos/cooxupe-conquista-na-justica-devolucao-de-mais-de-r-622-milhoes/",
           "categoryId": "cooxupe",
           "subcategory": "cooxupe",
-          "source": "Portal do Agronegócio",
-          "pubDate": "2026-07-28"
+          "source": "Canal Rural",
+          "pubDate": "2026-08-06"
         },
         {
           "id": "cooxupe-1785330496069-acw1qk",
@@ -56,48 +56,48 @@
       "title": "Inovação no Agro",
       "news": [
         {
-          "id": "inovacao-agro-1785330670926-thev5b",
-          "title": "Portal de Noticias",
-          "summary": "Brasil destina US 2 bilhões para impulsionar inovação tecnológica no agronegócio, destacando a importância da IA e 5G.",
-          "imageUrl": "https://cdn.conexaohost.com.br/img/500x500/1/0/webp/arquivos/1932/conteudo/posts/671740.jpg",
-          "articleUrl": "https://www.bra1.com.br/tecnologia/id-671740/brasil_investira_us__2_bilhoes_em_inovacao_tecnologica_no_agronegocio",
+          "id": "inovacao-agro-1787939257637-ul9zlh",
+          "title": "Embrapa e AgGateway discutem regulação de IA no agronegócio",
+          "summary": "A Embrapa Agricultura Digital e a AgGateway promoveram, em 25 de agosto, \numa reunião técnica para discutir a regulação da inteligência artificial \n(IA) no agronegócio e mostrar soluções tecnológicas aplicadas à agricultura \ndesenvolvidas pelo centro",
+          "imageUrl": "https://www.embrapa.br/image/journal/article?img_id=146883398&t=1787938738520",
+          "articleUrl": "https://www.embrapa.br/busca-de-noticias/-/noticia/146883651/embrapa-e-aggateway-discutem-regulacao-de-ia-no-agronegocio",
           "categoryId": "inovacao-agro",
           "subcategory": "inovacao-agro",
-          "source": "bra1.com.br",
-          "pubDate": "2026-07-28"
+          "source": "Embrapa",
+          "pubDate": "2026-08-28"
         },
         {
-          "id": "inovacao-agro-1785330740183-9xruuj",
-          "title": "Dia do agricultor: tecnologia muda o dia a dia do campo",
-          "summary": "Drones, agricultura de precisão e bioinsumos mudam a rotina no campo do ES e criam novas profissões. Veja exemplos e tendências.",
-          "imageUrl": "https://cdn2.tribunaonline.com.br/img/Artigo-Destaque/310000/Dia-do-agricultor-tecnologia-muda-o-dia-a-dia-do-c0031718500202607281503.jpg?xid=1483189",
-          "articleUrl": "https://tribunaonline.com.br/tribunaagro/tribunaagroes/dia-do-agricultor-tecnologia-muda-o-dia-a-dia-do-campo-317185?_=amp",
+          "id": "inovacao-agro-1787939269873-z6fd5d",
+          "title": "Atitus e CEDRA lançam iniciativa para o Agro Digital",
+          "summary": "Evento apresentou os desafios do AgIC – Agro Innovation Challenge",
+          "imageUrl": "https://siteprincipal.azureedge.net/siteprincipal-container/assets/Atitus_CEDRA_3_38425d0797.jpeg",
+          "articleUrl": "https://www.atitus.edu.br/noticias/universidade-atitus-e-cedra-lancam-iniciativa-conjunta-para-inovacao-no-agro-digital",
           "categoryId": "inovacao-agro",
           "subcategory": "inovacao-agro",
-          "source": "Tribuna Online",
-          "pubDate": "2026-07-28"
+          "source": "Atitus Educação",
+          "pubDate": "2026-08-28"
         },
         {
-          "id": "inovacao-agro-1785330820086-l33tv3",
-          "title": "Citros Show Nordeste 2026 reúne especialistas e produtores para discutir inovação, tecnologia e futuro da citricultura brasileira",
-          "summary": "Evento gratuito em Aracaju (SE) terá palestras, feira de negócios e debates sobre produtividade, desafios fitossanitários, mercado e novas soluções para fortalecer a cadeia dos citros no Brasil.",
-          "imageUrl": "https://www.portaldoagronegocio.com.br/storage/images/notices/6a62b0ac57216.jpg",
-          "articleUrl": "https://www.portaldoagronegocio.com.br/agricultura/fruticultura/noticias/citros-show-nordeste-2026-reune-especialistas-e-produtores-para-discutir-inovacao-tecnologia-e-futuro-da-citricultura-brasileira",
+          "id": "inovacao-agro-1787939320845-sfs8yk",
+          "title": "Expointer chega à 49ª edição com foco na valorização do meio rural e superação do agro gaúcho",
+          "summary": "Após anos marcados por dificuldades econômicas, feira volta as atenções à recuperação, adaptação e tecnologia",
+          "imageUrl": "https://www.rbsdirect.com.br/filestore/0/7/1/9/7/1/6_c46fb7f84a429da/6179170_fc953004c2159c0.jpg?w=1200&h=675&a=c&version=1575255600",
+          "articleUrl": "https://gauchazh.clicrbs.com.br/economia/expointer/noticia/2026/08/expointer-chega-a-49a-edicao-com-foco-na-valorizacao-do-meio-rural-e-superacao-do-agro-gaucho-cmtc54u4z01qh015g4jrthqls.html",
+          "categoryId": "inovacao-agro",
+          "subcategory": "inovacao-agro",
+          "source": "GZH",
+          "pubDate": "2026-08-28"
+        },
+        {
+          "id": "inovacao-agro-1787939596471-zv6ruy",
+          "title": "Inteligência artificial pode adicionar R$ 48,2 bilhões ao agronegócio brasileiro até 2030",
+          "summary": "Estudo do Reglab aponta que máquinas inteligentes, sensores, drones e agricultura de precisão responderão por 92% do impacto econômico estimado para a agropecuária",
+          "imageUrl": "https://www.portaldoagronegocio.com.br/storage/images/notices/6a88babb1bbf3.jpg",
+          "articleUrl": "https://www.portaldoagronegocio.com.br/tecnologia/conectividade-e-digital/noticias/inteligencia-artificial-pode-adicionar-r-48-2-bilhoes-ao-agronegocio-brasileiro-ate-2030",
           "categoryId": "inovacao-agro",
           "subcategory": "inovacao-agro",
           "source": "Portal do Agronegócio",
-          "pubDate": "2026-07-28"
-        },
-        {
-          "id": "inovacao-agro-1785330960883-bd36hl",
-          "title": "Mais tecnologia, menos defensivos: o desafio do agro brasileiro",
-          "summary": "Especialistas defendem aplicações mais precisas e o uso de bioinsumos para reduzir a dependência de pesticidas sem comprometer a produção",
-          "imageUrl": "https://s2-valor.glbimg.com/tvdSpSEAai345NXQJlU2V98g-SA=/1200x/smart/filters:cover():strip_icc()/i.s3.glbimg.com/v1/AUTH_63b422c2caee4269b8b34177e8876b93/internal_photos/bs/2026/M/f/bj5tpuTei4ovE8HYTbPQ/rev-agro-2026-062-dronenapulverizacao-fotowendersonaraujo-cna.jpg",
-          "articleUrl": "https://valor.globo.com/publicacoes/especiais/revista-agronegocio/noticia/2026/07/27/mais-tecnologia-menos-defensivos-o-desafio-do-agro-brasileiro.ghtml",
-          "categoryId": "inovacao-agro",
-          "subcategory": "inovacao-agro",
-          "source": "Valor Econômico",
-          "pubDate": "2026-07-27"
+          "pubDate": "2026-08-27"
         }
       ]
     },
@@ -106,37 +106,37 @@
       "title": "Defensivos",
       "news": [
         {
-          "id": "defensivos-1785331038445-fy4d2k",
-          "title": "Mercado de bioinsumos Latam entra em nova fase: Crescimento continua, mas diferenciação define vencedores",
-          "summary": "Depois de anos de expansão acelerada, o mercado latino-americano de produtos biológicos para agricultura entra em uma nova etapa de maturidade. O crescimento permanece consistente, mas a simples presença em um segmento em expansão já não garante rent",
-          "imageUrl": "https://www.agrolink.com.br/upload/imagens-resizes/56ff9a9809134d739d03581673134d87_858x483.jpg",
-          "articleUrl": "https://www.agrolink.com.br/noticias/mercado-de-bioinsumos-latam-entra-em-nova-fase--crescimento-continua--mas-diferenciacao-define-vencedores_517243.html",
+          "id": "defensivos-1787939678484-qd0551",
+          "title": "Governo e agro brasileiro debatem lei de bioinsumos",
+          "summary": "O governo e o agronegócio brasileiro volataram a debater a nova lei dos bioinsumos. Os produtores denunciam pressões e burocracias.",
+          "imageUrl": "https://assets.spalla.io/01a048c0-bb25-7fb5-ae88-eef4eb42973d/thumbnail-1787926994.jpg",
+          "articleUrl": "https://www.band.com.br/noticias/bora-brasil/videos/governo-e-agro-brasileiro-debatem-lei-de-bioinsumos-202608281123",
           "categoryId": "defensivos",
           "subcategory": "defensivos",
-          "source": "Agrolink",
-          "pubDate": "2026-07-29"
+          "source": "band.com.br",
+          "pubDate": "2026-08-28"
         },
         {
-          "id": "defensivos-1785331050032-pq4zuj",
-          "title": "Caruru avança nas lavouras de soja e pré-emergentes ganham protagonismo no manejo da safra 2026/27",
-          "summary": "Aumento da pressão de plantas daninhas em Mato Grosso exige estratégias antecipadas para preservar produtividade, reduzir resistência aos herbicidas e garantir maior eficiência no controle da soja.",
-          "imageUrl": "https://www.portaldoagronegocio.com.br/storage/images/notices/6a62d5d4f1ae7.jpg",
-          "articleUrl": "https://www.portaldoagronegocio.com.br/agricultura/soja/noticias/caruru-avanca-nas-lavouras-de-soja-e-pre-emergentes-ganham-protagonismo-no-manejo-da-safra-2026-27",
+          "id": "defensivos-1787939689611-hu5c4g",
+          "title": "Militares e fazendeiro são alvos de operação policial contra roubo de defensivos agrícolas na Bahia e no Tocantins",
+          "summary": "Investigações apontam atuação da organização criminosa entre 2025 e primeiro semestre de 2026",
+          "imageUrl": "https://www.faroldabahia.com.br/farol-arquivos-e-imagens/fotos/farol_noticias/241249/IMAGEM_NOTICIA_0.jpg?v=5f264bdd76e8b8fe847298d0964ec242",
+          "articleUrl": "https://www.faroldabahia.com.br/noticia/militares-e-fazendeiro-sao-alvos-de-operacao-policial-contra-roubo-de-defensivos-agricolas-na-bahia-e-no-tocantins",
           "categoryId": "defensivos",
           "subcategory": "defensivos",
-          "source": "Portal do Agronegócio",
-          "pubDate": "2026-07-29"
+          "source": "Farol da Bahia",
+          "pubDate": "2026-08-28"
         },
         {
-          "id": "defensivos-1785331092479-m4nmnb",
-          "title": "Portal de Noticias",
-          "summary": "A Agroallianz, empresa de defensivos agrícolas, quer crescer 25% em 2026 e busca um novo sócio para expandir seus negócios para outras ...",
-          "imageUrl": "https://cdn.conexaohost.com.br/img/500x500/1/0/webp/arquivos/1918/conteudo/posts/671878.jpg",
-          "articleUrl": "https://www.bra1.com.br/agronegocio/id-671878/agroallianz_busca_parceiro_para_alcancar_meta_de_r__1_bilhao",
+          "id": "defensivos-1787939815635-7x00ze",
+          "title": "Série Cacau: Cacauicultura vira campo de pesquisa para desenvolvimento de bioinsumos na região",
+          "summary": "No último episódio da nossa série especial sobre o cacau, mostramos como a cacauicultura também vem despertando o interesse da ciência. Em Nova Aliança, uma propriedade rural se transformou em campo de estudos para pesquisadores de uma universidade p",
+          "imageUrl": "https://newr7-r7-prod.web.arc-cdn.net/resizer/v2/IR2IUN6ZMBCMZLLYG43IWVG32A.jpg?smart=true&auth=ae1f0f7296ac445d52eafbe8e1afa4111db70ae01efbab0cd0bf88c471369913&width=1200&height=630",
+          "articleUrl": "https://record.r7.com/record-rio-preto/serie-cacau-cacauicultura-vira-campo-de-pesquisa-para-desenvolvimento-de-bioinsumos-na-regiao-27082026/",
           "categoryId": "defensivos",
           "subcategory": "defensivos",
-          "source": "bra1.com.br",
-          "pubDate": "2026-07-29"
+          "source": "R7",
+          "pubDate": "2026-08-27"
         }
       ]
     },
@@ -145,37 +145,37 @@
       "title": "Fertilizantes",
       "news": [
         {
-          "id": "fertilizantes-1785331116124-jyb09y",
-          "title": "Estudo aponta dose ideal de fertilizantes nitrogênio no arroz",
-          "summary": "Pesquisas conduzidas pela Instituto Nacional de Tecnologia Agropecuária e divulgadas pelo governo da Argentina apontam que a cultivar de arroz Angirú INTA CL vem se destacando pela qualidade industrial e culinária, aliando rendimento de grãos inteiro",
-          "imageUrl": "https://www.agrolink.com.br/upload/imagens-resizes/84c2db7b11d44933b04595ae1e433c9c_858x483.jpg",
-          "articleUrl": "https://www.agrolink.com.br/noticias/estudo-aponta-dose-ideal-de-fertilizantes-nitrogenio-no-arroz_517215.html",
+          "id": "fertilizantes-1787939849478-evbfw6",
+          "title": "A alta dos fertilizantes exige melhores soluções",
+          "summary": "O momento atual do agronegócio requer bastante atenção. Em 2026, o preço médio do MAP, uma das principais fontes de fósforo utilizadas no campo, chegou a...",
+          "imageUrl": "https://cdn.noticiasagricolas.com.br/dbimagens/28-08-img02jpg-UzcnB.jpeg",
+          "articleUrl": "https://www.noticiasagricolas.com.br/noticias/informe-publicitario/427118-a-alta-dos-fertilizantes-exige-melhores-solucoes.html",
+          "categoryId": "fertilizantes",
+          "subcategory": "fertilizantes",
+          "source": "Notícias Agrícolas",
+          "pubDate": "2026-08-28"
+        },
+        {
+          "id": "fertilizantes-1787939885711-qiy6ji",
+          "title": "Atraso em fertilizantes acende alerta para próxima safra",
+          "summary": "O atraso nas importações de fertilizantes acende um sinal de atenção para o abastecimento da próxima safra, especialmente em um cenário de custos mais altos e margens pressionadas no campo. Segundo o Rabobank, a maior volatilidade no mercado global d",
+          "imageUrl": "https://www.agrolink.com.br/upload/imagens-resizes/ceff29de552642439469d123ca87f414_858x483.jpg",
+          "articleUrl": "https://www.agrolink.com.br/noticias/atraso-em-fertilizantes-acende-alerta-para-proxima-safra_518280.html",
           "categoryId": "fertilizantes",
           "subcategory": "fertilizantes",
           "source": "Agrolink",
-          "pubDate": "2026-07-28"
+          "pubDate": "2026-08-28"
         },
         {
-          "id": "fertilizantes-1785331149022-5717jr",
-          "title": "Retomada da guerra encarece fertilizantes e aumenta riscos para o agronegócio brasileiro",
-          "summary": "A retomada dos ataques entre Estados Unidos e Irã em julho, depois de um acordo temporário que havia permitido a reabertura parcial do Estreito de Ormuz, voltou a pressionar o mercado de fertilizantes. Embora os bombardeios norte-americ...",
-          "imageUrl": "https://www.jornaloeste.com.br/imgsite/noticias/amp-c9cc16a5cee70a339b92c38fe97f8996.jpeg",
-          "articleUrl": "https://www.jornaloeste.com.br/noticias/exibir.asp?id=71202&noticia=retomada_da_guerra_encarece_fertilizantes_e_aumenta_riscos_para_o_agronegocio_brasileiro",
+          "id": "fertilizantes-1787939899267-g9myoe",
+          "title": "Lei Complementar 235 é sancionada com medidas sobre combustíveis, etanol e fertilizantes",
+          "summary": "Texto permite reduzir tributação para conter preços nas bombas e inclui dispositivos fiscais e benefícios a setores específicos.",
+          "imageUrl": "https://imagens-cdn.canalrural.com.br/2026/08/lei-complementar-235-e-sancionada-com-medidas-sobre-combustiveis-etanol-e-fertil-1200x675.png",
+          "articleUrl": "https://www.canalrural.com.br/politica/lei-complementar-235-e-sancionada-com-medidas-sobre-combustiveis-etanol-e-fertilizantes/",
           "categoryId": "fertilizantes",
           "subcategory": "fertilizantes",
-          "source": "Jornal Oeste",
-          "pubDate": "2026-07-28"
-        },
-        {
-          "id": "fertilizantes-1785331216956-8fwp32",
-          "title": "Com guerra no Irã, estoque brasileiro de enxofre pode não alcançar setembro, afirma Ibram",
-          "summary": "Enxofre é usado sobretudo na produção de fertilizantes, de produtos de saneamento básico e como insumo em algumas cadeias produtivas da mineração",
-          "imageUrl": "https://s2-valor.glbimg.com/Kz1OF-Ik99iKP8_kXKNWMyjWGlA=/1200x/smart/filters:cover():strip_icc()/i.s3.glbimg.com/v1/AUTH_63b422c2caee4269b8b34177e8876b93/internal_photos/bs/2023/z/v/oLE0JdT7iam7geF0lM8w/pablo-cesario-presidente-executivo-da-abrasca-03-gustavo-moreno.jpg",
-          "articleUrl": "https://valor.globo.com/empresas/noticia/2026/07/28/com-guerra-no-ir-estoque-brasileiro-de-enxofre-pode-no-alcanar-setembro-afirma-ibram.ghtml",
-          "categoryId": "fertilizantes",
-          "subcategory": "fertilizantes",
-          "source": "Valor Econômico",
-          "pubDate": "2026-07-28"
+          "source": "Canal Rural",
+          "pubDate": "2026-08-28"
         }
       ]
     },
@@ -184,37 +184,37 @@
       "title": "Máquinas/Irrigação",
       "news": [
         {
-          "id": "maquinas-irrigacao-1785331265953-h1bslz",
-          "title": "Golpe no agro: grupo forjava documentos para adquirir tratores",
-          "summary": "Com documentos falsos e empresas como fachada, grupo retirou cinco máquinas agrícolas e deixou prejuízo superior a R$ 770 mil",
-          "imageUrl": "https://i.metroimg.com/0jPA7dlMWGfOZtX7cF6LXirW6AAGCT_GT5faPZzCVpU/rs:fill:1200:800:1/g:no/q:85/f:webp/plain/https://images.metroimg.com/2026/07/screenshot-977.png",
-          "articleUrl": "https://www.metropoles.com/distrito-federal/na-mira/golpe-no-agro-grupo-forjava-documentos-para-adquirir-tratores",
-          "categoryId": "maquinas-irrigacao",
-          "subcategory": "maquinas",
-          "source": "Metrópoles",
-          "pubDate": "2026-07-29"
-        },
-        {
-          "id": "maquinas-irrigacao-1785331275711-4pxq80",
-          "title": "PCDF prende suspeito de fraudar compra de tratores e bloqueia R$ 1 milhão",
-          "summary": "Ação das autoridades ocorreu em Ituiutaba (MG) contra grupo que causou prejuízo de mais de R$ 770 mil em empresas do DF via golpes",
-          "imageUrl": "https://midias.correiobraziliense.com.br/_midias/jpg/2026/07/29/675x450/1_whatsapp-image-2026-07-29-at-08-35-11-67281738.jpeg",
-          "articleUrl": "https://www.correiobraziliense.com.br/cidades-df/2026/07/7469884-pcdf-prende-suspeito-de-fraudar-compra-de-tratores-e-bloqueia-rs-1-milhao.html",
-          "categoryId": "maquinas-irrigacao",
-          "subcategory": "maquinas",
-          "source": "Correio Braziliense",
-          "pubDate": "2026-07-29"
-        },
-        {
-          "id": "maquinas-irrigacao-1785331897292-ml290h",
-          "title": "Estudantes de Agronomia da UFSM/FW conhecem realidade do agronegócio no Cerrado brasileiro",
-          "summary": "Visita técnica proporcionou contato com sistemas produtivos, conhecimentos sobre agricultura irrigada, produtos biológicos e oportunidades profissionais",
-          "imageUrl": "https://www.oaltouruguai.com.br/media/articles/visita_tecnica_ufsm.jpeg",
-          "articleUrl": "https://www.oaltouruguai.com.br/noticia/estudantes-de-agronomia-da-ufsmfw-conhecem-realidade-do-agronegocio-no-cerrado-brasileiro/",
+          "id": "maquinas-irrigacao-1787940190963-ku5iqj",
+          "title": "Irrigação eficiente exige projeto, monitoramento e pós-venda especializado no campo",
+          "summary": "Netafim quadruplicou sua equipe técnica em cinco anos e ampliou investimentos em engenharia e tecnologias digitais para reduzir falhas, custos e riscos nas lavouras",
+          "imageUrl": "https://www.portaldoagronegocio.com.br/storage/images/notices/6a88d6f6e8f67.jpg",
+          "articleUrl": "https://www.portaldoagronegocio.com.br/gestao-rural/gestao/noticias/irrigacao-eficiente-exige-projeto-monitoramento-e-pos-venda-especializado-no-campo",
           "categoryId": "maquinas-irrigacao",
           "subcategory": "irrigacao",
-          "source": "O Alto Uruguai",
-          "pubDate": "2026-07-02"
+          "source": "Portal do Agronegócio",
+          "pubDate": "2026-08-28"
+        },
+        {
+          "id": "maquinas-irrigacao-1787940172455-z4yy5c",
+          "title": "Massey Ferguson lança trator compacto MF 2700 na Expointer 2026",
+          "summary": "Nova série oferece modelos de 35 cv a 60 cv para pequenos e médios produtores; marca também apresentará máquinas conectadas e tecnologias de agricultura de precisão",
+          "imageUrl": "https://www.portaldoagronegocio.com.br/storage/images/notices/6a88c0fab8c6c.jpg",
+          "articleUrl": "https://www.portaldoagronegocio.com.br/agroindustria/maquinas-e-implementos/noticias/massey-ferguson-lanca-trator-compacto-mf-2700-na-expointer-2026",
+          "categoryId": "maquinas-irrigacao",
+          "subcategory": "maquinas",
+          "source": "Portal do Agronegócio",
+          "pubDate": "2026-08-27"
+        },
+        {
+          "id": "maquinas-irrigacao-1787940146735-7ifxaw",
+          "title": "Agrônomo cria 'marketplace' de aluguel de máquinas agrícolas e fatura R$ 5 milhões por ano",
+          "summary": "Com cerca de 3 mil equipamentos cadastrados, empresa conecta produtores rurais e proprietários de máquinas ociosas em todo o Brasil.",
+          "imageUrl": "https://s2-g1.glbimg.com/BZ-3GUUPROAk0-vk8lQvgWlS4Vw=/1916x0/filters:format(jpeg)/https://i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/w/U/g0RADuShKEk3snLGL84g/captura-de-tela-2026-08-24-144832.png",
+          "articleUrl": "https://g1.globo.com/empreendedorismo/pegn/noticia/2026/08/26/agronomo-cria-marketplace-de-aluguel-de-maquinas-agricolas-e-fatura-r-5-milhoes-por-ano.ghtml",
+          "categoryId": "maquinas-irrigacao",
+          "subcategory": "maquinas",
+          "source": "G1",
+          "pubDate": "2026-08-26"
         }
       ]
     },
@@ -223,37 +223,37 @@
       "title": "Grãos (Café, Milho e Soja)",
       "news": [
         {
-          "id": "graos-1785331985228-fdhz8y",
-          "title": "Produtor de São Sebastião do Paraíso será palestrante em congresso internacional de cafeicultura na Guatemala",
-          "summary": "Jornal do Sudoeste",
-          "imageUrl": "https://jornaldosudoeste.com.br/assets/images/noticias/2026-07/6a69eeaad9cfd.webp",
-          "articleUrl": "https://jornaldosudoeste.com.br/noticia_detalhe.php?id=221750",
-          "categoryId": "graos",
-          "subcategory": "cafe",
-          "source": "Jornal do Sudoeste",
-          "pubDate": "2026-07-29"
-        },
-        {
-          "id": "graos-1785332015815-5qpsyn",
-          "title": "Safra de milho avança e reforça produção recorde",
-          "summary": "A colheita do milho da safra 2025/26 em Mato Grosso alcançou 90,66% da área estimada até o dia 24 de julho, com avanço semanal de 11,74 pontos percentuais. Os dados constam na análise semanal divulgada nesta segunda-feira (27) pelo Instituto Mato-Gro",
-          "imageUrl": "https://www.agrolink.com.br/upload/imagens-resizes/cf908fea3ce94068908150b23d5d2b4b_858x483.jpg",
-          "articleUrl": "https://www.agrolink.com.br/noticias/safra-de-milho-avanca-e-reforca-producao-recorde_517228.html",
+          "id": "graos-1787940486312-yz6npc",
+          "title": "Futuros do milho voltam a subir em Chicago com resultados da exportação dos EUA sustentando nessa sexta-feira",
+          "summary": "A sexta-feira (28) começa com os preços internacionais do milho futuro retomando as movimentações positivas na Bolsa de Chicago (CBOT), e contabilizando...",
+          "imageUrl": "https://cdn.noticiasagricolas.com.br/dbimagens/522990e46ed5ec9b859674a375333c61.jpg",
+          "articleUrl": "https://www.noticiasagricolas.com.br/noticias/milho/427124-futuros-do-milho-voltam-a-subir-em-chicago-com-resultados-da-exportacao-dos-eua-sustentando-nessa-sexta-feira.html",
           "categoryId": "graos",
           "subcategory": "milho",
-          "source": "Agrolink",
-          "pubDate": "2026-07-28"
+          "source": "Notícias Agrícolas",
+          "pubDate": "2026-08-28"
         },
         {
-          "id": "graos-1785332033110-47l0gt",
-          "title": "Mercado de soja mostra reação tímida em dia de poucos negócios",
-          "summary": "Preços internos registram recuperação pontual, enquanto produtores seguem cautelosos diante de baixa liquidez",
-          "imageUrl": "https://imagens-cdn.canalrural.com.br/2024/10/YldEGwgz-soybeans-1543071_960_720.jpg",
-          "articleUrl": "https://www.canalrural.com.br/agricultura/projeto-soja-brasil/mercado-de-soja-mostra-reacao-timida-em-dia-de-poucos-negocios/",
+          "id": "graos-1787940506882-67rjlm",
+          "title": "Soja rompe US$ 13 em Chicago impulsionada por disparada do trigo e novas vendas anunciadas pelo USDA",
+          "summary": "O trigo disparou, o USDA (Departamento de Agricultura dos Estados Unidos) anunciou mais vendas de soja e os futuros da oleaginosa alcnaçaram os US$ 13,00...",
+          "imageUrl": "https://cdn.noticiasagricolas.com.br/dbimagens/soja-6-Zfr74.jpeg",
+          "articleUrl": "https://www.noticiasagricolas.com.br/noticias/soja/427140-soja-rompe-us-13-em-chicago-impulsionada-por-disparada-do-trigo-e-novas-vendas-anunciadas-pelo-usda.html",
           "categoryId": "graos",
           "subcategory": "soja",
-          "source": "Canal Rural",
-          "pubDate": "2026-07-28"
+          "source": "Notícias Agrícolas",
+          "pubDate": "2026-08-28"
+        },
+        {
+          "id": "graos-1787940464490-334egk",
+          "title": "Painel Café em Números oferece visão integrada do café brasileiro",
+          "summary": "Ferramenta on-line lançada pela Embrapa reúne uma década de dados de produção e indicadores territoriais, sociais e climáticos; reportagem testa a navegação e analisa o caso de Cacoal (RO)",
+          "imageUrl": "https://www.cafepoint.com.br/img/artigo/124681/?w=1200&h=630&cf=1&vs=27082026185028",
+          "articleUrl": "https://www.cafepoint.com.br/noticias/giro-de-noticias/painel-cafe-em-numeros-oferece-visao-integrada-do-cafe-brasileiro-241936/",
+          "categoryId": "graos",
+          "subcategory": "cafe",
+          "source": "CaféPoint",
+          "pubDate": "2026-08-27"
         }
       ]
     },
@@ -262,37 +262,37 @@
       "title": "Gado de Corte",
       "news": [
         {
-          "id": "gado-corte-1785332063341-uu2jjb",
-          "title": "Arroba do boi gordo: pouca oferta de gado para abate sustenta preços no mercado",
-          "summary": "Evolução das escalas de abate e ritmo das exportações são apontados como fatores determinantes para a tendência dos preços",
-          "imageUrl": "https://imagens-cdn.canalrural.com.br/2024/10/boi-gordo-boiada-scaled-1536x1025.jpg",
-          "articleUrl": "https://www.canalrural.com.br/pecuaria/arroba-do-boi-gordo-pouca-oferta-de-gado-para-abate-sustenta-precos-no-mercado/",
+          "id": "gado-corte-1787940534710-2uowhr",
+          "title": "Boi gordo chega a R$ 350 por arroba em SP com pecuaristas retraídos",
+          "summary": "Com vendas de carne ainda lentas, frigoríficos reduzem abates ou recorrem a confinamentos próprios para completar escalas sem elevar preços",
+          "imageUrl": "https://imagens-cdn.canalrural.com.br/2024/10/boi-gordo-1536x1021.jpg",
+          "articleUrl": "https://www.canalrural.com.br/pecuaria/boi-gordo-chega-a-r-350-por-arroba-em-sp-com-pecuaristas-retraidos/",
           "categoryId": "gado-corte",
           "subcategory": "gado-corte",
           "source": "Canal Rural",
-          "pubDate": "2026-07-28"
+          "pubDate": "2026-08-28"
         },
         {
-          "id": "gado-corte-1785332075492-a1j3w3",
-          "title": "Arroba do boi sobe, escalas caem e indústria reduz número de plantas em atividade",
-          "summary": "Há plantas frigoríficas com férias coletivas distribuídas por todo Brasil. Também tem uma redução visível no ritmo de exportações de carne bovina,...",
-          "imageUrl": "https://cdn.acrissul.com.br/img/pc/2000/2000/dn_arquivo/2026/07/28071922-pexels-mat.jpg",
-          "articleUrl": "https://www.acrissul.com.br/noticias/arroba-do-boi-sobe-escalas-caem-e-industria-reduz-numero-de-plantas/27900/",
+          "id": "gado-corte-1787940687337-oruvq1",
+          "title": "Alta da arroba no mercado futuro proporciona melhor momento do ano para proteção de preços",
+          "summary": "Podcast Alta da arroba no mercado futuro proporciona melhor momento do ano para proteção de preços",
+          "imageUrl": "https://cdn.noticiasagricolas.com.br/dbimagens/pm-1-URTRx.png",
+          "articleUrl": "https://www.noticiasagricolas.com.br/videos/boi/427079-alta-da-arroba-no-mercado-futuro-proporciona-melhor-momento-do-ano-para-protecao-de-precos.html",
           "categoryId": "gado-corte",
           "subcategory": "gado-corte",
-          "source": "Acrissul",
-          "pubDate": "2026-07-28"
+          "source": "Notícias Agrícolas",
+          "pubDate": "2026-08-27"
         },
         {
-          "id": "gado-corte-1785332087589-eey0v3",
-          "title": "Boi gordo sobe em São Paulo e no Pará",
-          "summary": "A cotação do boi gordo voltou a subir nas praças pecuárias de São Paulo, impulsionada pela oferta reduzida de animais para abate. De acordo com a análise desta terça-feira (28) do informativo “Tem Boi na Linha”, publicado pela Scot Consultoria, o pre",
-          "imageUrl": "https://www.agrolink.com.br/upload/imagens-resizes/08d2a7d9d32243329bce981741e663e8_858x483.jpg",
-          "articleUrl": "https://www.agrolink.com.br/noticias/boi-gordo-sobe-em-sao-paulo-e-no-para_517234.html",
+          "id": "gado-corte-1787940734329-8g9rb6",
+          "title": "Preço do boi gordo cai em São Paulo e Mato Grosso com seca e maior oferta de animais",
+          "summary": "Demanda enfraquecida por carne limita as compras dos frigoríficos, enquanto estiagem acelera a saída de gado das propriedades e amplia a pressão sobre a arroba",
+          "imageUrl": "https://www.portaldoagronegocio.com.br/storage/images/notices/6a8f68fd45170.jpg",
+          "articleUrl": "https://www.portaldoagronegocio.com.br/pecuaria/bovinos-de-corte/noticias/preco-do-boi-gordo-cai-em-sao-paulo-e-mato-grosso-com-seca-e-maior-oferta-de-animais",
           "categoryId": "gado-corte",
           "subcategory": "gado-corte",
-          "source": "Agrolink",
-          "pubDate": "2026-07-28"
+          "source": "Portal do Agronegócio",
+          "pubDate": "2026-08-27"
         }
       ]
     },
@@ -301,37 +301,37 @@
       "title": "Leite",
       "news": [
         {
-          "id": "leite-1785332122136-o7syz0",
-          "title": "Preço do leite no RS tem alta de 2,98% em julho e vai a R$ 2,50 por litro",
-          "summary": "valores seguem estáveis e próximos da média histórica",
-          "imageUrl": "https://s2-globorural.glbimg.com/BvsdBblcbRN6LGAnoBSFVu6OnwE=/1200x/smart/filters:cover():strip_icc()/i.s3.glbimg.com/v1/AUTH_afe5c125c3bb42f0b5ae633b58923923/internal_photos/bs/2026/A/3/1Z7GHXTZGfzwtRXaw1kA/gado-holandes-credito-marcos-tang-divulgacao.jpg",
-          "articleUrl": "https://globorural.globo.com/pecuaria/leite/noticia/2026/07/preco-do-leite-no-rs-tem-alta-de-298percent-em-julho-e-vai-a-r-250-por-litro.ghtml",
+          "id": "leite-1787940807416-g9sbpg",
+          "title": "Citando aumento da oferta de leite, Conseleite/RS registra leve ajuste de -1,01%",
+          "summary": "De acordo com o Conseleite/RS, o aumento da oferta de leite no segundo semestre ocasionou o leve ajuste de -1,01% no preço projetado do leite.",
+          "imageUrl": "https://www.milkpoint.com.br/img/artigo/124683/?w=1200&h=630&cf=1&vs=28082026072816",
+          "articleUrl": "https://www.milkpoint.com.br/noticias-e-mercado/giro-noticias/citando-aumento-da-oferta-de-leite-conseleiters-registra-leve-ajuste-de-101-241937/",
           "categoryId": "leite",
           "subcategory": "leite",
-          "source": "Globo Rural",
-          "pubDate": "2026-07-29"
+          "source": "MilkPoint",
+          "pubDate": "2026-08-28"
         },
         {
-          "id": "leite-1785332132003-ysgt7c",
-          "title": "Custo de produção do leite tem queda no RS",
-          "summary": "O índice de 0,48%, referente a junho, é calculado pela Farsul, que, no entanto, manifesta preocupação com as “incertezas prolongadas no cenário internacional”",
-          "imageUrl": "https://www.correiodopovo.com.br/image/contentid/policy:1.1734988:1785330526/ANTUNES,%20Joseani%20Mesquita%20vacas.jpg?a=191%3A100&q=0.6&w=1200&$p$a$q$w=d28d4cc",
-          "articleUrl": "https://www.correiodopovo.com.br/not%C3%ADcias/rural/custo-de-producao-do-leite-tem-queda-no-rs-1.1734989",
-          "categoryId": "leite",
-          "subcategory": "leite",
-          "source": "Correio do Povo",
-          "pubDate": "2026-07-29"
-        },
-        {
-          "id": "leite-1785332360144-h1zxg1",
-          "title": "Simbrasil impulsiona investimento de R$ 5,5 milhões em projeto leiteiro de alta produtividade em Minas Gerais",
-          "summary": "Saexi aposta na genética da raça Simbrasil para ampliar produção de leite, aumentar sólidos, melhorar a rentabilidade da pecuária e fortalecer sistemas intensivos em compost barn.",
-          "imageUrl": "https://www.portaldoagronegocio.com.br/storage/images/notices/6a62a8c85c5bd.jpg",
-          "articleUrl": "https://www.portaldoagronegocio.com.br/pecuaria/bovinos-leite/noticias/simbrasil-impulsiona-investimento-de-r-5-5-milhoes-em-projeto-leiteiro-de-alta-produtividade-em-minas-gerais",
+          "id": "leite-1787940840652-j6dh79",
+          "title": "Margem do produtor de leite atinge maior nível desde 2024, aponta Rabobank",
+          "summary": "AgroInfo 2026 mostra recuperação do preço pago no campo para R$ 2,75 por litro, enquanto produção estagnada, importações elevadas e consumo enfraquecido definem o cenário do setor",
+          "imageUrl": "https://www.portaldoagronegocio.com.br/storage/images/notices/6a9091ef85cd9.jpg",
+          "articleUrl": "https://www.portaldoagronegocio.com.br/gestao-rural/precos-agropecuarios/noticias/margem-do-produtor-de-leite-atinge-maior-nivel-desde-2024-aponta-rabobank",
           "categoryId": "leite",
           "subcategory": "leite",
           "source": "Portal do Agronegócio",
-          "pubDate": "2026-07-27"
+          "pubDate": "2026-08-28"
+        },
+        {
+          "id": "leite-1787940875362-qyxf86",
+          "title": "Conselho projeta leite a R$ 2,48 em agosto no RS",
+          "summary": "Aumento da oferta e importações pressionam preços, enquanto atraso no milho preocupa produção de silagem - Grupo A Hora",
+          "imageUrl": "https://cdn-images.grupoahora.net.br/2026/08/vaca-ordenha-leite.jpg",
+          "articleUrl": "https://grupoahora.net.br/conteudos/2026/08/28/conselho-projeta-leite-a-r-248-em-agosto-no-rs/",
+          "categoryId": "leite",
+          "subcategory": "leite",
+          "source": "Grupo A Hora",
+          "pubDate": "2026-08-28"
         }
       ]
     }

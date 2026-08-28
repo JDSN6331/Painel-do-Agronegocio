@@ -405,9 +405,17 @@ async function runHeavyCycle() {
             }
         }
 
-        // Build and save news data
+        // Build and save news data (with Smart Merge)
         if (collectedCategories.length > 0) {
-            const newsData = buildNewsData(collectedCategories);
+            let previousData = null;
+            if (fs.existsSync(NEWS_FILE)) {
+                try {
+                    previousData = JSON.parse(fs.readFileSync(NEWS_FILE, 'utf-8'));
+                } catch (err) {
+                    console.log(`⚠️ Erro ao ler arquivo anterior para Smart Merge: ${err.message}`);
+                }
+            }
+            const newsData = buildNewsData(collectedCategories, previousData);
             const saved = saveNewsIfValid(NEWS_FILE, newsData);
             if (saved) {
                 console.log('✅ Notícias salvas com sucesso!');

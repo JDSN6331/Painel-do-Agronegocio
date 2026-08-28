@@ -64,7 +64,8 @@ function cleanupTempDir(dirPath) {
 }
 
 // Progressive period sequence (in days) - starts with 1 day for freshest news
-const PERIOD_SEQUENCE = [1, 3, 7, 10, 15, 21, 30];
+const PERIOD_SEQUENCE = [1, 3, 7, 10, 15, 21, 30, 45, 60];
+const MAX_NEWS_AGE_DAYS = Math.max(...PERIOD_SEQUENCE);
 
 // GLOBAL exclusions - terms that are NEVER relevant for agricultural news (any category)
 // NOTE: These terms are matched as WHOLE WORDS to avoid false positives
@@ -1264,13 +1265,13 @@ async function fetchNewsForQuery(browser, searchQuery, subId, categoryId, quota,
                 const finalPubDate = parseDate(rawDate);
                 console.log(`        ↳ Date: RSS="${rssFeedDate || 'N/A'}" HTML="${articlePubDate || 'N/A'}" → parsed="${finalPubDate}"`);
 
-                // Validar idade da notícia - no máximo 30 dias
+                // Validar idade da notícia - no máximo MAX_NEWS_AGE_DAYS dias
                 if (finalPubDate) {
                     const pubDateObj = new Date(finalPubDate.split('/').reverse().join('-'));
                     const now = new Date();
                     const daysDiff = Math.floor((now - pubDateObj) / (1000 * 60 * 60 * 24));
-                    if (daysDiff > 30) {
-                        console.log(`        ✗ Skipped: News is ${daysDiff} days old (max 30)`);
+                    if (daysDiff > MAX_NEWS_AGE_DAYS) {
+                        console.log(`        ✗ Skipped: News is ${daysDiff} days old (max ${MAX_NEWS_AGE_DAYS})`);
                         continue;
                     }
                 }
@@ -1478,18 +1479,7 @@ export async function collectNews() {
     }
 
     console.log('\n━━━ Collection Summary ━━━');
-    let totalItems = 0;
-    for (const cat of categories) {
-        console.log(`  📁 ${cat.title}: ${cat.news.length} news`);
-        totalItems += cat.news.length;
-    }
-    console.log(`  📊 Total: ${totalItems} items`);
-
-    return {
-        lastUpdate: new Date().toISOString(),
-        categories,
-        sources: NEWS_SOURCES
-    };
+    return buildNewsData(categories);
 }
 
 // ═══════════════════════════════════════════════════════════════════
@@ -1576,19 +1566,82 @@ export async function collectSingleCategory(browser, categoryIndex) {
 
 /**
  * Build final news data object from collected categories
+ * Applies Smart Merge with previous news data to guarantee full quotas
  */
-export function buildNewsData(categories) {
-    console.log('\n━━━ Collection Summary ━━━');
-    let totalItems = 0;
-    for (const cat of categories) {
-        console.log(`  📁 ${cat.title}: ${cat.news.length} news`);
-        totalItems += cat.news.length;
+export function buildNewsData(categories, previousData = null) {
+    // If previousData not explicitly passed, try loading from public/data/news.json
+    if (!previousData) {
+        const defaultNewsPath = path.join(process.cwd(), 'public', 'data', 'news.json');
+        if (fs.existsSync(defaultNewsPath)) {
+            try {
+                previousData = JSON.parse(fs.readFileSync(defaultNewsPath, 'utf-8'));
+            } catch (err) {
+                console.log(`⚠️ Erro ao carregar news.json para Smart Merge: ${err.message}`);
+            }
+        }
     }
-    console.log(`  📊 Total: ${totalItems} items`);
+
+    console.log('\n━━━ Resumo da Coleta (com Smart Merge) ━━━');
+    let totalItems = 0;
+
+    const mergedCategories = categories.map(cat => {
+        const catConfig = CATEGORY_FEEDS.find(f => f.id === cat.id);
+        const expectedQuota = catConfig?.newsQuota || (catConfig?.subcategories ? catConfig.subcategories.reduce((sum, s) => sum + (s.quota || 0), 0) : 3);
+
+        let currentNews = [...(cat.news || [])];
+        const newCount = currentNews.length;
+
+        // Se a categoria coletou menos que a cota, mescla com notícias válidas do arquivo anterior
+        if (currentNews.length < expectedQuota && previousData?.categories) {
+            const prevCat = previousData.categories.find(c => c.id === cat.id);
+            if (prevCat?.news && Array.isArray(prevCat.news)) {
+                const currentTitles = currentNews.map(n => n.title);
+                const currentUrls = new Set(currentNews.map(n => (n.articleUrl || '').toLowerCase().trim()));
+
+                for (const oldItem of prevCat.news) {
+                    if (currentNews.length >= expectedQuota) break;
+
+                    const oldUrl = (oldItem.articleUrl || '').toLowerCase().trim();
+                    const isDuplicateUrl = oldUrl && currentUrls.has(oldUrl);
+                    const isDuplicateTitle = isSimilarToExisting(oldItem.title, currentTitles);
+
+                    if (!isDuplicateUrl && !isDuplicateTitle) {
+                        currentNews.push(oldItem);
+                        currentTitles.push(oldItem.title);
+                        if (oldUrl) currentUrls.add(oldUrl);
+                    }
+                }
+            }
+        }
+
+        // Ordenar notícias por data (mais recente primeiro)
+        currentNews.sort((a, b) => {
+            const dateA = a.pubDate ? new Date(a.pubDate).getTime() : 0;
+            const dateB = b.pubDate ? new Date(b.pubDate).getTime() : 0;
+            return dateB - dateA;
+        });
+
+        const mergedCount = currentNews.length;
+        if (mergedCount > newCount) {
+            console.log(`  📁 ${cat.title}: ${newCount} nova(s) + ${mergedCount - newCount} mantida(s) do anterior (total: ${mergedCount}/${expectedQuota})`);
+        } else {
+            console.log(`  📁 ${cat.title}: ${mergedCount} notícia(s) (cota: ${expectedQuota})`);
+        }
+
+        totalItems += mergedCount;
+
+        return {
+            id: cat.id,
+            title: cat.title,
+            news: currentNews
+        };
+    });
+
+    console.log(`  📊 Total consolidado: ${totalItems} notícias`);
 
     return {
         lastUpdate: new Date().toISOString(),
-        categories,
+        categories: mergedCategories,
         sources: NEWS_SOURCES
     };
 }
