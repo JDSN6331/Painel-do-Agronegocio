@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import QuotesPanel from "@/components/QuotesPanel";
 import WeatherPanel from "@/components/WeatherPanel";
 import NewsPanel from "@/components/NewsPanel";
+import YouTubeChannelSection from "@/components/YouTubeChannelSection";
 import bgPattern from "@/assets/agro-wheat-bg.jpg";
 import { Link } from "react-router-dom";
 import { BookOpen, ArrowRight, Sparkles, Clock, ExternalLink } from "lucide-react";
@@ -38,6 +39,9 @@ const Index = () => {
             <QuotesPanel />
             <WeatherPanel />
           </div>
+
+          {/* YouTube Channel Highlight */}
+          <YouTubeChannelSection />
 
           {/* Featured Editorial Articles Section (Original Content for AdSense & SEO) */}
           <section className="mb-12">
