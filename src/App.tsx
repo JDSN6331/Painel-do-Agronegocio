@@ -12,6 +12,7 @@ import Calculadoras from "./pages/Calculadoras";
 import Artigos from "./pages/Artigos";
 import ArtigoDetalhe from "./pages/ArtigoDetalhe";
 import NotFound from "./pages/NotFound";
+import MobileAppShell from "./components/MobileAppShell";
 
 const queryClient = new QueryClient();
 
@@ -33,6 +34,7 @@ const App = () => (
           {/* CATCH-ALL ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
+        <MobileAppShell />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

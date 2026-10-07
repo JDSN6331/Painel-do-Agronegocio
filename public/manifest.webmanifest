@@ -1,0 +1,21 @@
+{
+  "name": "Painel do Agronegócio",
+  "short_name": "Painel Agro",
+  "description": "Cotações, clima, notícias e inteligência para o agronegócio brasileiro.",
+  "lang": "pt-BR",
+  "start_url": "/?source=pwa",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#07160c",
+  "theme_color": "#07160c",
+  "icons": [
+    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Cotações", "url": "/?atalho=cotacoes" },
+    { "name": "Calculadoras", "url": "/calculadoras" },
+    { "name": "Artigos", "url": "/artigos" }
+  ]
+}
