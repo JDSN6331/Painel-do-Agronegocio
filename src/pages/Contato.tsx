@@ -24,7 +24,7 @@ const Contato = () => {
         <Header />
 
         {/* Main Content with padding for fixed header */}
-        <main className="container mx-auto px-4 pt-72 sm:pt-56 lg:pt-40 pb-16 flex-grow flex items-center justify-center">
+        <main className="container mx-auto px-4 pt-header pb-16 flex-grow flex items-center justify-center">
           <div className="glass-panel p-8 md:p-12 max-w-2xl w-full rounded-2xl animate-in fade-in-50 slide-in-from-bottom-4 duration-500 text-center">
             <h1 className="text-2xl md:text-4xl font-bold text-gold-gradient mb-4 font-heading">
               Fale Conosco

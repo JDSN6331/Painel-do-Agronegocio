@@ -162,7 +162,7 @@ const CarouselCategory = ({
             <div className={`backdrop-blur-lg rounded-lg overflow-hidden mb-4 border ${borderColor} transition-all duration-300 bg-[hsl(140_30%_10%/0.4)]`}>
                 <div className="grid grid-cols-1 lg:grid-cols-2">
                     {/* Image with transition */}
-                    <div className="relative h-64 lg:h-80 overflow-hidden">
+                    <div className="relative h-48 sm:h-64 lg:h-80 overflow-hidden">
                         <img
                             key={activeNews.id}
                             src={activeNews.imageUrl || FALLBACK_IMAGES[categoryId] || FALLBACK_IMAGES['default']}
@@ -183,18 +183,18 @@ const CarouselCategory = ({
                     </div>
 
                     {/* Content with slide transition */}
-                    <div className={`p-6 flex flex-col justify-center transition-all duration-500 ease-in-out ${isTransitioning
+                    <div className={`p-4 sm:p-6 flex flex-col justify-center transition-all duration-500 ease-in-out ${isTransitioning
                         ? `opacity-0 ${slideDirection === 'left' ? '-translate-x-8' : 'translate-x-8'}`
                         : 'opacity-100 translate-x-0'
                         }`}>
-                        <h3 className={`text-xl lg:text-2xl font-bold font-heading mb-4 leading-tight ${isGold ? 'text-agro-gold' : 'text-emerald-400'
+                        <h3 className={`text-lg sm:text-xl lg:text-2xl font-bold font-heading mb-3 sm:mb-4 leading-tight ${isGold ? 'text-agro-gold' : 'text-emerald-400'
                             }`}>
                             {activeNews.title}
                         </h3>
-                        <p className="text-muted-foreground mb-4 line-clamp-4">
+                        <p className="text-sm sm:text-base text-muted-foreground mb-4 line-clamp-3 sm:line-clamp-4">
                             {activeNews.summary}
                         </p>
-                        <div className={`flex items-center gap-4 text-sm mb-4 ${isGold ? 'text-agro-gold-light' : 'text-emerald-300'
+                        <div className={`flex flex-wrap items-center gap-x-4 gap-y-1 text-xs sm:text-sm mb-4 ${isGold ? 'text-agro-gold-light' : 'text-emerald-300'
                             }`}>
                             {activeNews.source && (
                                 <div className="flex items-center gap-1">
@@ -223,7 +223,7 @@ const CarouselCategory = ({
             </div>
 
             {/* Thumbnails Grid - All 4 cards, selected one has gold border */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-3">
                 {displayNews.map((item, index) => {
                     const isSelected = index === activeIndex;
 
@@ -253,8 +253,8 @@ const CarouselCategory = ({
                                 ? 'bg-gradient-to-t from-black/50 via-transparent to-transparent'
                                 : 'bg-gradient-to-t from-black/70 via-black/30 to-black/10'
                                 }`} />
-                            <div className="absolute bottom-0 left-0 right-0 p-3">
-                                <h4 className={`text-xs sm:text-sm font-semibold text-white line-clamp-2 leading-tight ${isSelected ? '' : 'opacity-80'
+                            <div className="absolute bottom-0 left-0 right-0 p-2 sm:p-3">
+                                <h4 className={`text-[11px] sm:text-sm font-semibold text-white line-clamp-2 leading-tight ${isSelected ? '' : 'opacity-80'
                                     }`}>
                                     {item.title}
                                 </h4>

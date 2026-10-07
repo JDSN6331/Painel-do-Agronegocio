@@ -241,7 +241,7 @@ const Calculadoras = () => {
           <Header />
 
           {/* Main Content */}
-          <main className="container mx-auto px-4 pt-72 sm:pt-56 lg:pt-40 pb-16 flex-grow">
+          <main className="container mx-auto px-4 pt-header pb-16 flex-grow">
             <div className="max-w-5xl mx-auto">
               
               {/* Page Header */}

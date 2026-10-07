@@ -33,9 +33,9 @@ const Index = () => {
         <Header />
 
         {/* Main Content with padding for fixed header */}
-        <main className="container mx-auto px-3 sm:px-4 pt-72 sm:pt-[200px] md:pt-48 lg:pt-40 pb-8 sm:pb-12 flex-grow">
+        <main className="container mx-auto px-3 sm:px-4 pt-header pb-8 sm:pb-12 flex-grow">
           {/* Info Panels (Quotes and Weather) */}
-          <div className="flex flex-col gap-4 mb-8">
+          <div className="flex flex-col gap-4 mb-8 sm:mb-10">
             <QuotesPanel />
             <WeatherPanel />
           </div>
@@ -57,18 +57,18 @@ const Index = () => {
               </div>
               <Link
                 to="/artigos"
-                className="btn-gold text-xs px-4 py-2 inline-flex items-center gap-2"
+                className="btn-gold text-xs px-4 py-2 inline-flex items-center justify-center gap-2 w-full sm:w-auto"
               >
                 <span>Ver todos os artigos ({ARTICLES_DATA.length})</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </Link>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {recentArticles.map((article) => (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+              {recentArticles.map((article, index) => (
                 <div
                   key={article.id}
-                  className="glass-card rounded-xl overflow-hidden flex flex-col h-full hover:border-agro-gold/50 transition-all duration-300 group"
+                  className={`glass-card rounded-xl overflow-hidden flex flex-col h-full hover:border-agro-gold/50 transition-all duration-300 group ${index === 2 ? "sm:col-span-2 lg:col-span-1" : ""}`}
                 >
                   <div className="relative h-44 overflow-hidden">
                     <img
@@ -111,7 +111,7 @@ const Index = () => {
 
           {/* Guia Agronômico Highlight Banner */}
           <section className="mb-12">
-            <div className="glass-card rounded-2xl p-6 sm:p-8 relative overflow-hidden border border-agro-gold/30 bg-gradient-to-r from-background/90 via-agro-gold/5 to-background/90 shadow-xl">
+            <div className="glass-card rounded-2xl p-5 sm:p-8 relative overflow-hidden border border-agro-gold/30 bg-gradient-to-r from-background/90 via-agro-gold/5 to-background/90 shadow-xl">
               <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 relative z-10">
                 <div className="space-y-2 max-w-2xl">
                   <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-agro-gold/10 border border-agro-gold/30 text-agro-gold text-xs font-semibold uppercase tracking-wider">
@@ -129,7 +129,7 @@ const Index = () => {
                   href="https://crc-comercial-insumos-guia-agronomico.br1rfu.easypanel.host/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-gold px-5 py-3 text-xs sm:text-sm font-semibold rounded-xl inline-flex items-center gap-2 shrink-0 shadow-lg hover:scale-[1.02] transition-transform"
+                  className="btn-gold px-5 py-3 text-xs sm:text-sm font-semibold rounded-xl inline-flex items-center justify-center gap-2 shrink-0 shadow-lg hover:scale-[1.02] transition-transform w-full md:w-auto"
                 >
                   <span>Acessar Guia Agronômico AgroBase</span>
                   <ExternalLink className="w-4 h-4" />

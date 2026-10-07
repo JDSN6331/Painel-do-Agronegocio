@@ -22,23 +22,23 @@ interface NewsCategoryProps {
 const NewsCategory = ({ title, icon: Icon, news, isHighlighted = false, customIconSrc }: NewsCategoryProps) => {
   return (
     <section className={`animate-fade-in ${isHighlighted ? 'category-highlight' : ''}`}>
-      <div className="flex items-center gap-3 mb-4">
-        <div className={`p-2 rounded-lg ${isHighlighted
+      <div className="flex items-center gap-2 sm:gap-3 mb-4">
+        <div className={`p-1.5 sm:p-2 rounded-lg shrink-0 ${isHighlighted
           ? 'bg-agro-gold/20 border border-agro-gold/30'
           : 'bg-agro-gold/20 border border-agro-gold/30'
           }`}>
           {customIconSrc ? (
-            <img src={customIconSrc} alt={title} className="w-6 h-6 object-contain" />
+            <img src={customIconSrc} alt={title} className="w-5 h-5 sm:w-6 sm:h-6 object-contain" />
           ) : (
-            <Icon className={`w-6 h-6 ${isHighlighted ? 'text-agro-gold' : 'text-agro-gold'}`} />
+            <Icon className={`w-5 h-5 sm:w-6 sm:h-6 ${isHighlighted ? 'text-agro-gold' : 'text-agro-gold'}`} />
           )}
         </div>
         <h2 className={`category-title ${isHighlighted ? 'category-title-highlight' : ''}`}>
           {title}
         </h2>
-        <div className={`flex-1 h-px ${isHighlighted ? 'bg-agro-gold/30' : 'bg-agro-gold/30'}`} />
+        <div className={`flex-1 min-w-4 h-px ${isHighlighted ? 'bg-agro-gold/30' : 'bg-agro-gold/30'}`} />
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {news.slice(0, 3).map((item) => (
           <NewsCard
             key={item.id}

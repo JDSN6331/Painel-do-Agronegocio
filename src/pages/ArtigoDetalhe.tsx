@@ -44,7 +44,7 @@ const ArtigoDetalhe = () => {
         </div>
         <div className="relative z-10 flex flex-col min-h-screen">
           <Header />
-          <main className="container mx-auto px-4 pt-48 pb-16 flex-grow flex items-center justify-center">
+          <main className="container mx-auto px-4 pt-header pb-16 flex-grow flex items-center justify-center">
             <div className="glass-panel p-8 text-center max-w-md w-full rounded-2xl">
               <BookOpen className="w-12 h-12 text-agro-gold mx-auto mb-4" />
               <h1 className="text-xl font-bold font-heading text-foreground mb-2">
@@ -157,7 +157,7 @@ const ArtigoDetalhe = () => {
       <div className="relative z-10 flex flex-col min-h-screen">
         <Header />
 
-        <main className="container mx-auto px-4 pt-72 sm:pt-56 lg:pt-40 pb-16 flex-grow max-w-4xl">
+        <main className="container mx-auto px-4 pt-header pb-16 flex-grow max-w-4xl">
           {/* Breadcrumbs */}
           <nav className="flex items-center gap-2 text-xs text-muted-foreground mb-6 overflow-x-auto no-scrollbar">
             <Link to="/" className="hover:text-agro-gold transition-colors whitespace-nowrap">

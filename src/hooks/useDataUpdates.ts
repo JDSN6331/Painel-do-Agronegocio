@@ -35,7 +35,7 @@ export interface Category {
 
 // Global state for last update time (shared across components)
 let globalLastUpdate: string | null = null;
-let globalUpdateListeners: Set<(timestamp: string) => void> = new Set();
+const globalUpdateListeners: Set<(timestamp: string) => void> = new Set();
 
 function notifyGlobalUpdate(timestamp: string) {
     // Only update if new timestamp is more recent than current

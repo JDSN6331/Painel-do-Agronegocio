@@ -23,7 +23,7 @@ const Privacidade = () => {
       <div className="relative z-10 flex flex-col min-h-screen">
         <Header />
 
-        <main className="container mx-auto px-4 pt-72 sm:pt-56 lg:pt-40 pb-16 flex-grow flex items-center justify-center">
+        <main className="container mx-auto px-4 pt-header pb-16 flex-grow flex items-center justify-center">
           <div className="glass-panel p-8 md:p-12 max-w-4xl w-full rounded-2xl animate-in fade-in-50 slide-in-from-bottom-4 duration-500">
             <div className="flex items-center justify-center gap-3 mb-6">
               <Shield className="w-8 h-8 text-agro-gold" />
