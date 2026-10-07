@@ -8,7 +8,6 @@ const FEATURES = [
 ];
 
 const YouTubeChannelSection = () => {
-  const channelUrl = YOUTUBE_CONFIG.channelUrl.trim();
   const subscribeUrl = getYouTubeSubscribeUrl();
 
   return (
@@ -56,9 +55,6 @@ const YouTubeChannelSection = () => {
                   <source src="/videos/video-de-abertura-v2.mp4" type="video/mp4" />
                   Seu navegador não suporta a reprodução de vídeo.
                 </video>
-              </div>
-              <div className="mt-3 flex items-center justify-end gap-3">
-                <a href={channelUrl} target="_blank" rel="noopener noreferrer" className="shrink-0 text-xs font-semibold text-agro-gold hover:underline inline-flex items-center gap-1">Ver canal <ArrowUpRight className="w-3.5 h-3.5" /></a>
               </div>
             </div>
           </div>

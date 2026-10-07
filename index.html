@@ -34,6 +34,23 @@
   <meta name="twitter:description" content="Artigos técnicos, cotações agrícolas e calculadoras de rendimento no campo." />
   <meta name="twitter:image" content="/og-image.png" />
 
+  <!--
+    Keep the SEO pre-render out of the first paint. React removes the
+    data-app-loading attribute synchronously after mounting the real app.
+  -->
+  <style>
+    #root[data-app-loading] {
+      visibility: hidden;
+    }
+  </style>
+  <noscript>
+    <style>
+      #root[data-app-loading] {
+        visibility: visible;
+      }
+    </style>
+  </noscript>
+
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9298801559698341"
     crossorigin="anonymous"></script>
@@ -56,7 +73,7 @@
 </head>
 
 <body>
-  <div id="root">
+  <div id="root" data-app-loading>
     <div class="min-h-screen flex flex-col">
       <header class="fixed top-0 left-0 right-0 z-50 glass-panel rounded-none border-x-0 border-t-0">
         <div class="container mx-auto px-4 py-4">
