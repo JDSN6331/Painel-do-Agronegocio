@@ -6,7 +6,7 @@ import NewsPanel from "@/components/NewsPanel";
 import YouTubeChannelSection from "@/components/YouTubeChannelSection";
 import bgPattern from "@/assets/agro-wheat-bg.jpg";
 import { Link } from "react-router-dom";
-import { BookOpen, ArrowRight, Sparkles, Clock, ExternalLink } from "lucide-react";
+import { ArrowRight, Sparkles, Clock } from "lucide-react";
 import { ARTICLES_DATA } from "@/data/articlesData";
 
 const Index = () => {
@@ -106,35 +106,6 @@ const Index = () => {
                   </div>
                 </div>
               ))}
-            </div>
-          </section>
-
-          {/* Guia Agronômico Highlight Banner */}
-          <section className="mb-12">
-            <div className="glass-card rounded-2xl p-5 sm:p-8 relative overflow-hidden border border-agro-gold/30 bg-gradient-to-r from-background/90 via-agro-gold/5 to-background/90 shadow-xl">
-              <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 relative z-10">
-                <div className="space-y-2 max-w-2xl">
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-agro-gold/10 border border-agro-gold/30 text-agro-gold text-xs font-semibold uppercase tracking-wider">
-                    <BookOpen className="w-3.5 h-3.5" />
-                    Solução Agronômica Recomendada
-                  </div>
-                  <h2 className="text-xl sm:text-2xl font-bold font-heading text-gold-gradient">
-                    Guia Agronômico AgroBase
-                  </h2>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    Acesse um guia completo de insumos, manejo e recomendações técnicas para apoiar o planejamento e as melhores decisões no campo.
-                  </p>
-                </div>
-                <a
-                  href="https://crc-comercial-insumos-guia-agronomico.br1rfu.easypanel.host/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-gold px-5 py-3 text-xs sm:text-sm font-semibold rounded-xl inline-flex items-center justify-center gap-2 shrink-0 shadow-lg hover:scale-[1.02] transition-transform w-full md:w-auto"
-                >
-                  <span>Acessar Guia Agronômico AgroBase</span>
-                  <ExternalLink className="w-4 h-4" />
-                </a>
-              </div>
             </div>
           </section>
 

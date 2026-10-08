@@ -131,7 +131,6 @@ function generateFooterHtml() {
               <li><a href="/" class="hover:text-agro-gold">Início</a></li>
               <li><a href="/artigos" class="hover:text-agro-gold">Artigos & Análises</a></li>
               <li><a href="/calculadoras" class="hover:text-agro-gold">Calculadoras Agrícolas</a></li>
-              <li><a href="https://crc-comercial-insumos-guia-agronomico.br1rfu.easypanel.host/" target="_blank" rel="noopener noreferrer" class="hover:text-agro-gold text-agro-gold font-medium">Guia Agronômico AgroBase ↗</a></li>
             </ul>
           </div>
           <div>
@@ -198,13 +197,6 @@ const homeBodyHtml = `
         </div>
       </section>
 
-      <section class="mb-12">
-        <div class="glass-card rounded-2xl p-6 border border-agro-gold/30 bg-gradient-to-r from-background/90 via-agro-gold/5 to-background/90">
-          <h2 class="text-xl font-bold text-gold-gradient mb-2">Guia Agronômico AgroBase</h2>
-          <p class="text-sm text-muted-foreground mb-4">Acesse um guia completo de insumos, manejo e recomendações técnicas para apoiar o planejamento e as melhores decisões no campo.</p>
-          <a href="https://crc-comercial-insumos-guia-agronomico.br1rfu.easypanel.host/" target="_blank" rel="noopener noreferrer" class="btn-gold px-5 py-2.5 text-xs font-semibold rounded-xl inline-block">Acessar Guia Agronômico AgroBase ↗</a>
-        </div>
-      </section>
     </main>
     ${generateFooterHtml()}
   </div>
