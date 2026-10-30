@@ -21,22 +21,43 @@ export type LocalWeatherStatus =
   | "needs-city" // localização indisponível/negada -> exibir picklist
   | "error";
 
-type StoredPreference = { mode: "geo" } | ({ mode: "manual" } & CityOption);
-
-function readPreference(): StoredPreference | null {
+function readFallbackCity(): CityOption | null {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
-    return raw ? (JSON.parse(raw) as StoredPreference) : null;
+    if (!raw) return null;
+    const parsed = JSON.parse(raw);
+    if (
+      parsed &&
+      typeof parsed.city === "string" &&
+      typeof parsed.lat === "number" &&
+      typeof parsed.lon === "number"
+    ) {
+      return {
+        city: parsed.city,
+        state: typeof parsed.state === "string" ? parsed.state : "",
+        lat: parsed.lat,
+        lon: parsed.lon,
+      };
+    }
+    return null;
   } catch {
     return null;
   }
 }
 
-function savePreference(pref: StoredPreference) {
+function saveFallbackCity(city: CityOption) {
   try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(pref));
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(city));
   } catch {
     /* armazenamento indisponível (modo privado etc.) */
+  }
+}
+
+function clearFallbackCity() {
+  try {
+    localStorage.removeItem(STORAGE_KEY);
+  } catch {
+    /* armazenamento indisponível */
   }
 }
 
@@ -85,8 +106,10 @@ async function fetchForecast(loc: CityOption): Promise<WeatherData> {
 }
 
 /**
- * Clima da localização do usuário (geolocalização do navegador) com
- * fallback para uma cidade escolhida manualmente em uma picklist.
+ * Clima da localização do usuário (geolocalização do navegador).
+ * Sempre tenta obter a localização ao carregar a página; só recorre
+ * à última cidade escolhida manualmente se a localização estiver
+ * bloqueada ou indisponível.
  */
 export function useLocalWeather() {
   const [location, setLocation] = useState<UserLocation | null>(null);
@@ -95,60 +118,76 @@ export function useLocalWeather() {
   const [message, setMessage] = useState<string | null>(null);
   const requestId = useRef(0);
 
-  const requestGeolocation = useCallback(() => {
-    const id = ++requestId.current;
-    setMessage(null);
-
-    if (typeof navigator === "undefined" || !("geolocation" in navigator)) {
-      setStatus("needs-city");
-      setMessage("Seu navegador não suporta geolocalização. Escolha uma cidade:");
-      return;
+  const applyFallbackOrAskCity = useCallback((useSavedFallback: boolean, fallbackMessage: string) => {
+    if (useSavedFallback) {
+      const saved = readFallbackCity();
+      if (saved) {
+        setLocation({ ...saved, source: "manual" });
+        return;
+      }
     }
-    if (typeof window !== "undefined" && !window.isSecureContext) {
-      setStatus("needs-city");
-      setMessage("Localização indisponível nesta conexão. Escolha uma cidade:");
-      return;
-    }
-
-    setStatus("locating");
-    navigator.geolocation.getCurrentPosition(
-      async (pos) => {
-        if (id !== requestId.current) return;
-        const lat = pos.coords.latitude;
-        const lon = pos.coords.longitude;
-        const { city, state } = await reverseGeocode(lat, lon);
-        if (id !== requestId.current) return;
-        savePreference({ mode: "geo" });
-        setLocation({ city, state, lat, lon, source: "geo" });
-      },
-      (err) => {
-        if (id !== requestId.current) return;
-        setStatus("needs-city");
-        setMessage(
-          err.code === err.PERMISSION_DENIED
-            ? "Localização não autorizada. Escolha uma cidade:"
-            : "Não foi possível obter sua localização. Escolha uma cidade:"
-        );
-      },
-      { enableHighAccuracy: false, timeout: 15000, maximumAge: 10 * 60 * 1000 }
-    );
+    setStatus("needs-city");
+    setMessage(fallbackMessage);
   }, []);
+
+  const requestGeolocation = useCallback(
+    (options?: { useSavedFallback?: boolean }) => {
+      const useSavedFallback = options?.useSavedFallback ?? false;
+      const id = ++requestId.current;
+      setMessage(null);
+
+      if (typeof navigator === "undefined" || !("geolocation" in navigator)) {
+        applyFallbackOrAskCity(
+          useSavedFallback,
+          "Seu navegador não suporta geolocalização. Escolha uma cidade:"
+        );
+        return;
+      }
+      if (typeof window !== "undefined" && !window.isSecureContext) {
+        applyFallbackOrAskCity(
+          useSavedFallback,
+          "Localização indisponível nesta conexão. Escolha uma cidade:"
+        );
+        return;
+      }
+
+      setStatus("locating");
+      navigator.geolocation.getCurrentPosition(
+        async (pos) => {
+          if (id !== requestId.current) return;
+          const lat = pos.coords.latitude;
+          const lon = pos.coords.longitude;
+          const { city, state } = await reverseGeocode(lat, lon);
+          if (id !== requestId.current) return;
+          clearFallbackCity();
+          setLocation({ city, state, lat, lon, source: "geo" });
+        },
+        (err) => {
+          if (id !== requestId.current) return;
+          applyFallbackOrAskCity(
+            useSavedFallback,
+            err.code === err.PERMISSION_DENIED
+              ? "Localização não autorizada. Escolha uma cidade:"
+              : "Não foi possível obter sua localização. Escolha uma cidade:"
+          );
+        },
+        { enableHighAccuracy: false, timeout: 15000, maximumAge: 10 * 60 * 1000 }
+      );
+    },
+    [applyFallbackOrAskCity]
+  );
 
   const selectCity = useCallback((city: CityOption) => {
     requestId.current++; // cancela pedidos de geolocalização pendentes
-    savePreference({ mode: "manual", ...city });
+    saveFallbackCity(city);
     setMessage(null);
     setLocation({ ...city, source: "manual" });
   }, []);
 
-  // Inicialização: respeita a preferência salva do usuário
+  // Inicialização: sempre tenta a geolocalização primeiro; se falhar/estiver bloqueada,
+  // usa a cidade salva anteriormente (se houver) ou abre a picklist.
   useEffect(() => {
-    const pref = readPreference();
-    if (pref?.mode === "manual") {
-      setLocation({ city: pref.city, state: pref.state, lat: pref.lat, lon: pref.lon, source: "manual" });
-    } else {
-      requestGeolocation();
-    }
+    requestGeolocation({ useSavedFallback: true });
   }, [requestGeolocation]);
 
   // Busca a previsão sempre que a localização mudar (e atualiza periodicamente)
@@ -181,4 +220,3 @@ export function useLocalWeather() {
 
   return { location, weather, status, message, requestGeolocation, selectCity };
 }
-
