@@ -2,16 +2,6 @@
   "lastUpdate": "2026-10-07T02:12:12.671Z",
   "weather": [
     {
-      "city": "São Paulo",
-      "state": "SP",
-      "temperature": 19,
-      "humidity": 96,
-      "rainProbability": 100,
-      "weatherCode": 51,
-      "condition": "Garoa leve",
-      "conditionIcon": "cloud-drizzle"
-    },
-    {
       "city": "Guaxupé",
       "state": "MG",
       "temperature": 19,

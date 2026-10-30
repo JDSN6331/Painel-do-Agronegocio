@@ -1,8 +1,9 @@
 import axios from 'axios';
 
 // Cities to fetch weather for (latitude, longitude)
+// Obs.: o primeiro card do painel é a localização do usuário (ou cidade escolhida),
+// buscada diretamente no navegador — ver src/hooks/useLocalWeather.ts
 const CITIES = [
-    { city: 'São Paulo', state: 'SP', lat: -23.5505, lon: -46.6333 },
     { city: 'Guaxupé', state: 'MG', lat: -21.3056, lon: -46.7128 },
     { city: 'São José do Rio Pardo', state: 'SP', lat: -21.5939, lon: -46.8889 },
     { city: 'Patrocínio', state: 'MG', lat: -18.9439, lon: -46.9928 }
